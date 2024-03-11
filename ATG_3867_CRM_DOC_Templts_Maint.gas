@@ -1,0 +1,323 @@
+Program.Sub.ScreenSU.Start
+gui.F_Templates..create
+gui.F_Templates..caption("Template Maintenance")
+gui.F_Templates..size(5445,2490)
+gui.F_Templates..position(0,0)
+gui.F_Templates..event(unload,f_templates_unload)
+gui.F_Templates..alwaysontop(False)
+gui.F_Templates..fontname("Arial")
+gui.F_Templates..fontsize(8)
+gui.F_Templates..forecolor(0)
+gui.F_Templates..fontstyle(,,,,)
+gui.F_Templates..BackColor(-2147483633)
+gui.F_Templates..controlbox(True)
+gui.F_Templates..maxbutton(True)
+gui.F_Templates..minbutton(True)
+gui.F_Templates..mousepointer(0)
+gui.F_Templates..moveable(True)
+gui.F_Templates..sizeable(False)
+gui.F_Templates..ShowInTaskBar(True)
+gui.F_Templates..titlebar(True)
+gui.F_Templates.txt_TDID.create(textbox,"",True,930,300,0,200,400,False,0,Arial,8,-2147483643,1)
+gui.F_Templates.txt_FQN.create(textbox,"",True,4515,300,0,200,1000,True,0,Arial,8,-2147483643,1)
+gui.F_Templates.lblID.create(label,"Template ID",True,1935,255,1,200,200,True,0,Arial,8,-2147483633,0)
+gui.F_Templates.lbl_path.create(label,"File Path",True,1935,255,1,200,800,True,0,Arial,8,-2147483633,0)
+gui.F_Templates.cmd_file.create(button)
+gui.F_Templates.cmd_file.caption("^")
+gui.F_Templates.cmd_file.visible(True)
+gui.F_Templates.cmd_file.size(315,300)
+gui.F_Templates.cmd_file.zorder(0)
+gui.F_Templates.cmd_file.position(4800,1000)
+gui.F_Templates.cmd_file.enabled(True)
+gui.F_Templates.cmd_file.fontname("Arial")
+gui.F_Templates.cmd_file.fontsize(8)
+gui.F_Templates.cmd_file.event(click,cmd_file_click)
+gui.F_Templates.cmd_Save.create(button)
+gui.F_Templates.cmd_Save.caption("Save")
+gui.F_Templates.cmd_Save.visible(True)
+gui.F_Templates.cmd_Save.size(855,375)
+gui.F_Templates.cmd_Save.zorder(0)
+gui.F_Templates.cmd_Save.position(200,1500)
+gui.F_Templates.cmd_Save.enabled(True)
+gui.F_Templates.cmd_Save.fontname("Arial")
+gui.F_Templates.cmd_Save.fontsize(8)
+gui.F_Templates.cmd_Save.event(click,cmd_save_click)
+gui.F_Templates.txt_Template_Name.create(textbox,"",True,3515,300,0,1600,400,True,0,Arial,8,-2147483643,1)
+gui.F_Templates.lbl_doc_name.create(label,"Document Name",True,1935,255,1,1600,200,True,0,Arial,8,-2147483633,0)
+gui.F_Templates.cmd_template.create(button)
+gui.F_Templates.cmd_template.caption("^")
+gui.F_Templates.cmd_template.visible(True)
+gui.F_Templates.cmd_template.size(300,300)
+gui.F_Templates.cmd_template.zorder(0)
+gui.F_Templates.cmd_template.position(1200,400)
+gui.F_Templates.cmd_template.enabled(True)
+gui.F_Templates.cmd_template.fontname("Arial")
+gui.F_Templates.cmd_template.fontsize(8)
+gui.F_Templates.cmd_template.event(click,cmd_template_click)
+gui.F_Templates.cmd_New.create(button)
+gui.F_Templates.cmd_New.caption("New")
+gui.F_Templates.cmd_New.visible(True)
+gui.F_Templates.cmd_New.size(855,375)
+gui.F_Templates.cmd_New.zorder(0)
+gui.F_Templates.cmd_New.position(1200,1500)
+gui.F_Templates.cmd_New.enabled(True)
+gui.F_Templates.cmd_New.fontname("Arial")
+gui.F_Templates.cmd_New.fontsize(8)
+gui.F_Templates.cmd_New.event(click,cmd_new_click)
+gui.F_Templates.cmd_delete.create(button)
+gui.F_Templates.cmd_delete.caption("Delete")
+gui.F_Templates.cmd_delete.visible(True)
+gui.F_Templates.cmd_delete.size(855,375)
+gui.F_Templates.cmd_delete.zorder(0)
+gui.F_Templates.cmd_delete.position(2200,1500)
+gui.F_Templates.cmd_delete.enabled(True)
+gui.F_Templates.cmd_delete.fontname("Arial")
+gui.F_Templates.cmd_delete.fontsize(8)
+gui.F_Templates.cmd_delete.event(click,cmd_delete_click)
+
+
+Program.Sub.ScreenSU.End
+
+Program.Sub.Preflight.Start
+
+Program.Sub.Preflight.End
+
+Program.Sub.Main.Start
+'Coded by: Melinda Keyes
+'Project Start Date: 11/14/2011
+'Quote: 2861
+'Hooks:
+'  Custom Menu Item
+'Notes:
+'  A GAB maintenance program will be written to manage available template documents that appear in the list.
+'  This will be run from a custom menu item and access will be controlled using menu security.
+'   A custom table will be used to store the template document info.
+'  Fields in this table will be TDID, Template Name, Path, Filename, UserID, LastModifiedDT.
+'  The screen should have a field for name and full path (populated from an open file dialog).
+'  The path and the filename should be split upon saving.
+
+F.Intrinsic.Control.SetErrorHandler("Main_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+V.Local.iTDID.Declare(Long)
+
+F.ODBC.Connection!conX.OpenConnection(V.Ambient.PDSN,V.Ambient.PUser,V.Ambient.PPass)
+F.ODBC.Connection!conX.getID("ATG_3867_CRM_DocTemp","TDID",true,V.Local.iTDID)
+F.Intrinsic.Control.If(V.Local.iTDID,=,0)
+	V.Local.iTDID.Set(1)
+F.Intrinsic.Control.EndIf
+Gui.F_Templates.txt_TDID.Text(V.Local.iTDID)
+
+Gui.F_Templates..Show
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("Main_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: ATG_3867_CRM_DOC_TEMPLTS_MAINT.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+
+Program.Sub.Main.End
+
+program.sub.cmd_save_click.start
+F.Intrinsic.Control.SetErrorHandler("cmd_save_click_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+V.Local.sQuery.Declare(String)
+V.Local.sTDID.Declare(String)
+V.Local.sName.Declare(String)
+V.Local.sFQN.Declare(String)
+V.Local.sPath.Declare(String)
+V.Local.sFileName.Declare(String)
+V.Local.sTemp.Declare(String)
+V.Local.sSecurity.Declare(String)
+V.Local.iUser.Declare(Long)
+
+V.Local.sFQN.Set(V.Screen.F_Templates!txt_FQN.Text)
+V.Local.sName.Set(V.Screen.F_Templates!txt_Template_Name.Text)
+V.Local.sTDID.Set(V.Screen.F_Templates!txt_TDID.Text)
+
+F.Intrinsic.String.Trim(V.Local.sFQN,V.Local.sFQN)
+F.Intrinsic.String.Trim(V.Local.sName,V.Local.sName)
+F.Intrinsic.String.Trim(V.Local.sTDID,V.Local.sTDID)
+
+F.Intrinsic.Control.If(V.Local.sFQN,=,"")
+	F.Intrinsic.UI.Msgbox("Please enter a file path before saving.")
+	F.Intrinsic.Control.ExitSub
+F.Intrinsic.Control.ElseIf(V.Local.sName,=,"")
+	F.Intrinsic.UI.Msgbox("Please enter a template name before saving.")
+	F.Intrinsic.Control.ExitSub
+F.Intrinsic.Control.ElseIf(V.Local.sTDID,=,"")
+	F.Intrinsic.UI.Msgbox("Please enter a template ID before saving.")
+	F.Intrinsic.Control.ExitSub
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.File.GetFileNameFromFQN(V.Local.sFQN,V.Local.sFileName)
+F.Intrinsic.File.GetPathFromFQN(V.Local.sFQN,V.Local.sPath)
+
+F.Intrinsic.String.Split(V.Local.sPath,"\",V.Local.sTemp)
+V.Local.sSecurity.Set(V.Local.sTemp(V.Local.sTemp.UBound))
+
+F.Intrinsic.String.Concat("SELECT * FROM ATG_3867_CRM_DocTemp WHERE TDID = '",V.Local.sTDID,"'",V.Local.sQuery)
+F.ODBC.Connection!conX.OpenRecordsetRW("rst",V.Local.sQuery)
+F.Intrinsic.Control.If(V.ODBC.conX!rst.EOF,=,True)
+	F.ODBC.conX!rst.AddNew
+F.Intrinsic.Control.EndIf
+F.ODBC.conX!rst.Set!TDID(V.Local.sTDID)
+F.ODBC.conX!rst.Set!Template_Name(V.Local.sName)
+F.ODBC.conX!rst.Set!Path(V.Local.sPath)
+F.ODBC.conX!rst.Set!Filename(V.Local.sFileName)
+F.ODBC.conX!rst.Set!Security_Group(V.Local.sSecurity)
+F.Global.Security.GetUserID(V.Caller.User,V.Caller.CompanyCode,V.Local.iUser)
+F.ODBC.conX!rst.Set!UserID(V.Local.iUser)
+F.ODBC.conX!rst.Set!LastModifiedDT(V.Ambient.Now)
+F.ODBC.conX!rst.Update
+F.ODBC.conX!rst.Close
+
+F.Intrinsic.Control.CallSub(Cmd_new_click)
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("cmd_save_click_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: ATG_3867_CRM_DOC_TEMPLTS_MAINT.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+
+program.sub.cmd_save_click.end
+
+program.sub.cmd_file_click.start
+F.Intrinsic.Control.SetErrorHandler("cmd_file_click_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+V.Local.sFQN.Declare(String)
+F.Intrinsic.UI.ShowOpenFileDialog("","*.doc",V.Caller.PluginsDir,V.Local.sFQN)
+F.Intrinsic.Control.If(V.Local.sFQN,<>,"***CANCEL***")
+	Gui.F_Templates.txt_FQN.Text(V.Local.sFQN)
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("cmd_file_click_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: ATG_3867_CRM_DOC_TEMPLTS_MAINT.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+
+program.sub.cmd_file_click.end
+
+program.sub.f_templates_unload.start
+F.Intrinsic.Control.SetErrorHandler("f_templates_unload_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+F.ODBC.Connection!conX.Close
+F.Intrinsic.Control.End
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("f_templates_unload_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: ATG_3867_CRM_DOC_TEMPLTS_MAINT.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+
+program.sub.f_templates_unload.end
+
+program.sub.cmd_template_click.start
+F.Intrinsic.Control.SetErrorHandler("cmd_template_click_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+V.Local.sTitles.Declare(String)
+V.Local.iWidths.Declare(Long)
+V.Local.sQuery.Declare(String)
+V.Local.sReturn.Declare(String)
+V.Local.sTemp.Declare(String)
+
+V.Local.sQuery.Set("SELECT TDID, Template_Name, Path, Filename FROM ATG_3867_CRM_DocTemp ORDER BY TDID")
+
+F.Intrinsic.String.Split("Template ID*!*Template Name*!*Path*!*FileName","*!*",V.Local.sTitles)
+F.Intrinsic.String.Split("1500*!*2000*!*3500*!*2000","*!*",V.Local.iWidths)
+
+F.Intrinsic.UI.Browser("Templates",conX,V.Local.sQuery,V.Local.sTitles,V.Local.iWidths,10000,5000,V.Local.sReturn)
+F.Intrinsic.Control.If(V.Local.sReturn,<>,"***CANCEL***")
+	F.Intrinsic.String.Split(V.Local.sReturn,"*!*",V.Local.sReturn)
+	F.Intrinsic.String.Trim(V.Local.sReturn(0),V.Local.sReturn(0))
+	F.Intrinsic.String.Trim(V.Local.sReturn(1),V.Local.sReturn(1))
+	F.Intrinsic.String.Trim(V.Local.sReturn(2),V.Local.sReturn(2))
+	F.Intrinsic.String.Trim(V.Local.sReturn(3),V.Local.sReturn(3))
+	Gui.F_Templates.txt_TDID.Text(V.Local.sReturn(0))
+	Gui.F_Templates.txt_Template_Name.Text(V.Local.sReturn(1))
+	F.Intrinsic.String.Concat(V.Local.sReturn(2),"\",V.Local.sReturn(3),V.Local.sTemp)
+	Gui.F_Templates.txt_FQN.Text(V.Local.sTemp)
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("cmd_template_click_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: ATG_3867_CRM_DOC_TEMPLTS_MAINT.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+
+program.sub.cmd_template_click.end
+
+program.sub.cmd_new_click.start
+F.Intrinsic.Control.SetErrorHandler("cmd_new_click_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+V.Local.iTDID.Declare(String)
+
+Gui.F_Templates.txt_FQN.Text("")
+Gui.F_Templates.txt_TDID.Text("")
+Gui.F_Templates.txt_Template_Name.Text("")
+F.ODBC.Connection!conX.getID("ATG_CRM_DOC_TEMPLTS","TDID",true,V.Local.iTDID)
+F.Intrinsic.Control.If(V.Local.iTDID,=,0)
+	V.Local.iTDID.Set(1)
+F.Intrinsic.Control.EndIf
+Gui.F_Templates.txt_TDID.Text(V.Local.iTDID)
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("cmd_new_click_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: ATG_3867_CRM_DOC_TEMPLTS_MAINT.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+
+program.sub.cmd_new_click.end
+
+program.sub.cmd_delete_click.start
+F.Intrinsic.Control.SetErrorHandler("cmd_delete_click_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+V.Local.sQuery.Declare(String)
+V.Local.sTDID.Declare(String)
+
+V.Local.sTDID.Set(V.Screen.F_Templates!txt_TDID.Text)
+F.Intrinsic.String.Trim(V.Local.sTDID,V.Local.sTDID)
+
+F.Intrinsic.String.Concat("DELETE FROM ATG_3867_CRM_DocTemp WHERE TDID = '",V.Local.sTDID,"'",V.Local.sQuery)
+F.ODBC.Connection!conX.Execute(V.Local.sQuery)
+
+F.Intrinsic.Control.CallSub(Cmd_new_click)
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("cmd_delete_click_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: ATG_3867_CRM_DOC_TEMPLTS_MAINT.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+
+program.sub.cmd_delete_click.end
+
+
