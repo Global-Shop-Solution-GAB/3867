@@ -1,0 +1,195 @@
+Program.Sub.ScreenSU.Start
+gui.F_Signatures..create
+gui.F_Signatures..caption("Signature Maintenance")
+gui.F_Signatures..size(9675,6315)
+gui.F_Signatures..position(0,0)
+gui.F_Signatures..event(unload,f_signatures_unload)
+gui.F_Signatures..alwaysontop(False)
+gui.F_Signatures..fontname("Arial")
+gui.F_Signatures..fontsize(8)
+gui.F_Signatures..forecolor(0)
+gui.F_Signatures..fontstyle(,,,,)
+gui.F_Signatures..BackColor(-2147483633)
+gui.F_Signatures..controlbox(True)
+gui.F_Signatures..maxbutton(True)
+gui.F_Signatures..minbutton(True)
+gui.F_Signatures..mousepointer(0)
+gui.F_Signatures..moveable(True)
+gui.F_Signatures..sizeable(True)
+gui.F_Signatures..ShowInTaskBar(True)
+gui.F_Signatures..titlebar(True)
+gui.F_Signatures.txt_user.create(textbox,"",True,2250,300,0,200,400,True,0,Arial,8,-2147483643,1)
+gui.F_Signatures.cmd_user.create(button)
+gui.F_Signatures.cmd_user.caption("^")
+gui.F_Signatures.cmd_user.visible(True)
+gui.F_Signatures.cmd_user.size(300,300)
+gui.F_Signatures.cmd_user.zorder(0)
+gui.F_Signatures.cmd_user.position(2500,400)
+gui.F_Signatures.cmd_user.enabled(True)
+gui.F_Signatures.cmd_user.fontname("Arial")
+gui.F_Signatures.cmd_user.fontsize(8)
+gui.F_Signatures.cmd_user.event(click,cmd_user_click)
+gui.F_Signatures.mltxt_signature.create(textboxm)
+gui.F_Signatures.mltxt_signature.text("")
+gui.F_Signatures.mltxt_signature.visible(True)
+gui.F_Signatures.mltxt_signature.size(9120,4125)
+gui.F_Signatures.mltxt_signature.zorder(0)
+gui.F_Signatures.mltxt_signature.position(200,1100)
+gui.F_Signatures.mltxt_signature.enabled(True)
+gui.F_Signatures.mltxt_signature.alignment(0)
+gui.F_Signatures.mltxt_signature.fontname("Arial")
+gui.F_Signatures.mltxt_signature.fontsize(8)
+gui.F_Signatures.mltxt_signature.BackColor(-2147483643)
+gui.F_Signatures.cmd_Save.create(button)
+gui.F_Signatures.cmd_Save.caption("Save")
+gui.F_Signatures.cmd_Save.visible(True)
+gui.F_Signatures.cmd_Save.size(1000,375)
+gui.F_Signatures.cmd_Save.zorder(0)
+gui.F_Signatures.cmd_Save.position(200,5300)
+gui.F_Signatures.cmd_Save.enabled(True)
+gui.F_Signatures.cmd_Save.fontname("Arial")
+gui.F_Signatures.cmd_Save.fontsize(8)
+gui.F_Signatures.cmd_Save.event(click,cmd_save_click)
+gui.F_Signatures.lbl_user.create(label,"GS User",True,1935,255,1,200,200,True,0,Arial,8,-2147483633,0)
+gui.F_Signatures.lbl_Signature.create(label,"Document Signature",True,1935,255,1,215,875,True,0,Arial,8,-2147483633,0)
+
+
+Program.Sub.ScreenSU.End
+
+Program.Sub.Preflight.Start
+
+Program.Sub.Preflight.End
+
+Program.Sub.Main.Start
+'Coded by: Melinda Keyes
+'Project Start Date: 11/15/2011
+'Quote: 2861
+'Hooks:
+'  Custom Menu Item
+'Notes:
+'  A maintenance program will be written to store a text signature by user.
+'  It will store the information in a custom table containing UserID and Signature (LONGVARCHAR) fields.
+
+F.Intrinsic.Control.SetErrorHandler("Main_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+F.ODBC.Connection!conX.OpenConnection(V.Ambient.PDSN,V.Ambient.PUser,V.Ambient.PPass)
+Gui.F_Signatures.txt_user.Enabled(false)
+Gui.F_Signatures.mltxt_signature.Enabled(false)
+
+Gui.F_Signatures..Show
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("Main_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: ATG_3867_DOC_SIGNATURE_MAINT.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.Debug.SetLA(V.Local.sError)
+	V.Global.bErrs.Set(True)
+Function.Intrinsic.Control.EndIf
+
+Program.Sub.Main.End
+
+program.sub.cmd_user_click.start
+F.Intrinsic.Control.SetErrorHandler("cmd_user_click_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+V.Local.sReturn.Declare(String)
+V.Local.sUserName.Declare(String)
+V.Local.sQuery.Declare(String)
+
+F.Intrinsic.UI.Browser(10,,V.Local.sReturn)
+F.Intrinsic.Control.If(V.Local.sReturn,<>,"***CANCEL***")
+	F.Intrinsic.String.Split(V.Local.sReturn,"*!*",V.Local.sReturn)
+	Gui.F_Signatures.txt_user.Text(V.Local.sReturn(1))
+	Gui.F_Signatures.mltxt_signature.Text("")
+	Gui.F_Signatures.mltxt_signature.Enabled(true)
+	F.Intrinsic.String.Concat("SELECT * FROM ATG_3867_Doc_Signtrs WHERE USERID = '",V.Local.sReturn(0),"'",V.Local.sQuery)
+	F.ODBC.Connection!conX.OpenRecordsetRO("rst",V.Local.sQuery)
+	F.Intrinsic.Control.If(V.ODBC.conX!rst.EOF,<>,True)
+		Gui.F_Signatures.mltxt_signature.Text(V.ODBC.conX!rst.FieldVal!SIGNATURE)
+	F.Intrinsic.Control.EndIf
+	F.ODBC.conX!rst.Close
+F.Intrinsic.Control.Else
+	Gui.F_Signatures.txt_user.Text("")
+	Gui.F_Signatures.mltxt_signature.Text("")
+	Gui.F_Signatures.mltxt_signature.Enabled(false)
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("cmd_user_click_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: ATG_3867_DOC_SIGNATURE_MAINT.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.Debug.SetLA(V.Local.sError)
+	V.Global.bErrs.Set(True)
+Function.Intrinsic.Control.EndIf
+
+program.sub.cmd_user_click.end
+
+program.sub.f_signatures_unload.start
+F.Intrinsic.Control.SetErrorHandler("f_signatures_unload_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+F.ODBC.Connection!conX.Close
+F.Intrinsic.Control.End
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("f_signatures_unload_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: ATG_3867_DOC_SIGNATURE_MAINT.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.Debug.SetLA(V.Local.sError)
+	V.Global.bErrs.Set(True)
+Function.Intrinsic.Control.EndIf
+
+program.sub.f_signatures_unload.end
+
+program.sub.cmd_save_click.start
+F.Intrinsic.Control.SetErrorHandler("cmd_save_click_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+V.Local.sQuery.Declare(String)
+V.Local.sUser.Declare(String)
+V.Local.sSignature.Declare(String)
+V.Local.iID.Declare(Long)
+
+V.Local.sUser.Set(V.Screen.F_Signatures!txt_user.Text)
+V.Local.sSignature.Set(V.Screen.F_Signatures!mltxt_signature.Text)
+
+F.Intrinsic.Control.If(V.Local.sUser.Trim,<>,"")
+	F.Global.Security.GetUserID(V.Local.sUser,V.Caller.CompanyCode,V.Local.iID)
+	F.Intrinsic.String.Concat("SELECT * FROM ATG_3867_Doc_Signtrs WHERE USERID = '",V.Local.iID,"'",V.Local.sQuery)
+	F.ODBC.Connection!conX.OpenRecordsetRW("rst",V.Local.sQuery)
+	F.Intrinsic.Control.If(V.ODBC.conX!rst.EOF,=,True)
+		F.ODBC.conX!rst.AddNew
+	F.Intrinsic.Control.EndIf
+	F.ODBC.conX!rst.Set!UserID(V.Local.iID)
+	F.ODBC.conX!rst.Set!Signature(V.Local.sSignature)
+	F.ODBC.conX!rst.Update
+	F.ODBC.conX!rst.Close
+F.Intrinsic.Control.Else
+	F.Intrinsic.UI.Msgbox("Please select a user first.")
+	F.Intrinsic.Control.ExitSub
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.UI.Msgbox("Signature saved.")
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("cmd_save_click_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: ATG_3867_DOC_SIGNATURE_MAINT.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.Debug.SetLA(V.Local.sError)
+	V.Global.bErrs.Set(True)
+Function.Intrinsic.Control.EndIf
+
+program.sub.cmd_save_click.end
+
+
