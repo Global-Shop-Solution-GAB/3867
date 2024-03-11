@@ -1,0 +1,3 @@
+CREATE TABLE "ATG_3867_Doc_Signtrs"(
+ "UserID" INTEGER NOT NULL ,
+ "Signature" LONGVARCHAR);
