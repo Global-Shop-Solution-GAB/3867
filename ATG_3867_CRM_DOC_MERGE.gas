@@ -1,0 +1,1393 @@
+Program.Sub.ScreenSU.Start
+gui.F_Doc_Merge..create
+gui.F_Doc_Merge..caption("Document Merge")
+gui.F_Doc_Merge..size(9585,7305)
+gui.F_Doc_Merge..position(0,0)
+gui.F_Doc_Merge..event(unload,f_doc_merge_unload)
+gui.F_Doc_Merge..alwaysontop(False)
+gui.F_Doc_Merge..fontname("Arial")
+gui.F_Doc_Merge..fontsize(8)
+gui.F_Doc_Merge..forecolor(0)
+gui.F_Doc_Merge..fontstyle(,,,,)
+gui.F_Doc_Merge..BackColor(-2147483633)
+gui.F_Doc_Merge..controlbox(True)
+gui.F_Doc_Merge..maxbutton(True)
+gui.F_Doc_Merge..minbutton(True)
+gui.F_Doc_Merge..mousepointer(0)
+gui.F_Doc_Merge..moveable(True)
+gui.F_Doc_Merge..sizeable(False)
+gui.F_Doc_Merge..ShowInTaskBar(True)
+gui.F_Doc_Merge..titlebar(True)
+gui.F_Doc_Merge.dlist_templates.create(dropdownlist)
+gui.F_Doc_Merge.dlist_templates.visible(True)
+gui.F_Doc_Merge.dlist_templates.size(5095,330)
+gui.F_Doc_Merge.dlist_templates.zorder(0)
+gui.F_Doc_Merge.dlist_templates.position(200,2300)
+gui.F_Doc_Merge.dlist_templates.enabled(True)
+gui.F_Doc_Merge.dlist_templates.fontname("Arial")
+gui.F_Doc_Merge.dlist_templates.fontsize(8)
+gui.F_Doc_Merge.lbl_templates.create(label,"Template",True,1935,255,1,200,2100,True,0,Arial,8,-2147483633,0)
+gui.F_Doc_Merge.lbl_contact.create(label,"Contact",True,1935,255,1,200,200,True,0,Arial,8,-2147483633,0)
+gui.F_Doc_Merge.dlist_contacts.create(dropdownlist)
+gui.F_Doc_Merge.dlist_contacts.visible(True)
+gui.F_Doc_Merge.dlist_contacts.size(4525,330)
+gui.F_Doc_Merge.dlist_contacts.zorder(0)
+gui.F_Doc_Merge.dlist_contacts.position(200,400)
+gui.F_Doc_Merge.dlist_contacts.enabled(True)
+gui.F_Doc_Merge.dlist_contacts.fontname("Arial")
+gui.F_Doc_Merge.dlist_contacts.fontsize(8)
+gui.F_Doc_Merge.dlist_contacts.event(lostfocus,dlist_contacts_lostfocus)
+gui.F_Doc_Merge.txt_addtl_email.create(textbox,"",True,4500,300,0,200,1100,True,0,Arial,8,-2147483643,1)
+gui.F_Doc_Merge.txt_addtl_email.event(keypressenter,cmd_add_click)
+gui.F_Doc_Merge.lbl_email.create(label,"Recipient Email (optional)",True,1935,255,1,200,900,True,0,Arial,8,-2147483633,0)
+gui.F_Doc_Merge.txt_subject.create(textbox,"",True,5115,300,0,200,3600,True,0,Arial,8,-2147483643,1)
+gui.F_Doc_Merge.txt_subject.maxLength(30)
+gui.F_Doc_Merge.lbl_subject.create(label,"Subject",True,1935,225,1,200,3400,True,0,Arial,8,-2147483633,0)
+gui.F_Doc_Merge.mltxt_email_body.create(textboxm)
+gui.F_Doc_Merge.mltxt_email_body.text("")
+gui.F_Doc_Merge.mltxt_email_body.visible(True)
+gui.F_Doc_Merge.mltxt_email_body.size(9090,1995)
+gui.F_Doc_Merge.mltxt_email_body.zorder(0)
+gui.F_Doc_Merge.mltxt_email_body.position(200,4210)
+gui.F_Doc_Merge.mltxt_email_body.enabled(True)
+gui.F_Doc_Merge.mltxt_email_body.alignment(0)
+gui.F_Doc_Merge.mltxt_email_body.fontname("Arial")
+gui.F_Doc_Merge.mltxt_email_body.fontsize(8)
+gui.F_Doc_Merge.mltxt_email_body.BackColor(-2147483643)
+gui.F_Doc_Merge.lbl_recipients.create(label,"Recipients",True,1935,255,1,5400,200,True,0,Arial,8,-2147483633,0)
+gui.F_Doc_Merge.lbl_email_body.create(label,"Email Body",True,1935,255,1,200,4000,True,0,Arial,8,-2147483633,0)
+gui.F_Doc_Merge.cmd_send.create(button)
+gui.F_Doc_Merge.cmd_send.caption("Send")
+gui.F_Doc_Merge.cmd_send.visible(True)
+gui.F_Doc_Merge.cmd_send.size(1000,375)
+gui.F_Doc_Merge.cmd_send.zorder(0)
+gui.F_Doc_Merge.cmd_send.position(1200,6300)
+gui.F_Doc_Merge.cmd_send.enabled(False)
+gui.F_Doc_Merge.cmd_send.fontname("Arial")
+gui.F_Doc_Merge.cmd_send.fontsize(8)
+gui.F_Doc_Merge.cmd_send.event(click,cmd_send_click)
+gui.F_Doc_Merge.cmd_addRcpt.create(button)
+gui.F_Doc_Merge.cmd_addRcpt.caption(">")
+gui.F_Doc_Merge.cmd_addRcpt.visible(True)
+gui.F_Doc_Merge.cmd_addRcpt.size(355,375)
+gui.F_Doc_Merge.cmd_addRcpt.zorder(0)
+gui.F_Doc_Merge.cmd_addRcpt.position(4900,700)
+gui.F_Doc_Merge.cmd_addRcpt.enabled(True)
+gui.F_Doc_Merge.cmd_addRcpt.fontname("Arial")
+gui.F_Doc_Merge.cmd_addRcpt.fontsize(8)
+gui.F_Doc_Merge.cmd_addRcpt.event(click,cmd_add_click)
+gui.F_Doc_Merge.lst_recipients.create(listbox)
+gui.F_Doc_Merge.lst_recipients.visible(True)
+gui.F_Doc_Merge.lst_recipients.size(3885,1605)
+gui.F_Doc_Merge.lst_recipients.zorder(0)
+gui.F_Doc_Merge.lst_recipients.position(5400,400)
+gui.F_Doc_Merge.lst_recipients.enabled(True)
+gui.F_Doc_Merge.lst_recipients.fontname("Arial")
+gui.F_Doc_Merge.lst_recipients.fontsize(8)
+gui.F_Doc_Merge.lst_recipients.event(dblclick,lst_recipients_dblclick)
+gui.F_Doc_Merge.cmd_clear.create(button)
+gui.F_Doc_Merge.cmd_clear.caption("Clear")
+gui.F_Doc_Merge.cmd_clear.visible(True)
+gui.F_Doc_Merge.cmd_clear.size(1000,375)
+gui.F_Doc_Merge.cmd_clear.zorder(0)
+gui.F_Doc_Merge.cmd_clear.position(2400,6300)
+gui.F_Doc_Merge.cmd_clear.enabled(True)
+gui.F_Doc_Merge.cmd_clear.fontname("Arial")
+gui.F_Doc_Merge.cmd_clear.fontsize(8)
+gui.F_Doc_Merge.cmd_clear.event(click,cmd_clear_click)
+gui.F_Doc_Merge.txt_CC.create(textbox,"",True,5100,300,0,200,1700,True,0,Arial,8,-2147483643,1)
+gui.F_Doc_Merge.lbl_CC.create(label,"CC Recipient",True,1935,255,1,200,1500,True,0,Arial,8,-2147483633,0)
+gui.F_Doc_Merge.cmdEdit.create(button)
+gui.F_Doc_Merge.cmdEdit.caption("EditDoc")
+gui.F_Doc_Merge.cmdEdit.visible(True)
+gui.F_Doc_Merge.cmdEdit.size(855,375)
+gui.F_Doc_Merge.cmdEdit.zorder(0)
+gui.F_Doc_Merge.cmdEdit.position(200,6300)
+gui.F_Doc_Merge.cmdEdit.enabled(True)
+gui.F_Doc_Merge.cmdEdit.fontname("Arial")
+gui.F_Doc_Merge.cmdEdit.fontsize(8)
+gui.F_Doc_Merge.cmdEdit.event(click,cmdedit_click)
+gui.F_Doc_Merge.txtAttach.create(textbox,"",True,3990,300,0,200,3000,True,0,Arial,8,-2147483643,1)
+gui.F_Doc_Merge.lbl8.create(label,"Other Attachment",True,1935,300,1,200,2800,True,0,Arial,8,-2147483633,0)
+gui.F_Doc_Merge.cmdAttachBrws.create(button)
+gui.F_Doc_Merge.cmdAttachBrws.caption("^")
+gui.F_Doc_Merge.cmdAttachBrws.visible(True)
+gui.F_Doc_Merge.cmdAttachBrws.size(420,345)
+gui.F_Doc_Merge.cmdAttachBrws.zorder(0)
+gui.F_Doc_Merge.cmdAttachBrws.position(4300,3000)
+gui.F_Doc_Merge.cmdAttachBrws.enabled(True)
+gui.F_Doc_Merge.cmdAttachBrws.fontname("Arial")
+gui.F_Doc_Merge.cmdAttachBrws.fontsize(8)
+gui.F_Doc_Merge.cmdAttachBrws.event(click,cmdattachbrws_click)
+gui.F_Doc_Merge.lstAttach.create(listbox)
+gui.F_Doc_Merge.lstAttach.visible(True)
+gui.F_Doc_Merge.lstAttach.size(3840,1575)
+gui.F_Doc_Merge.lstAttach.zorder(0)
+gui.F_Doc_Merge.lstAttach.position(5395,2300)
+gui.F_Doc_Merge.lstAttach.enabled(True)
+gui.F_Doc_Merge.lstAttach.fontname("Arial")
+gui.F_Doc_Merge.lstAttach.fontsize(8)
+gui.F_Doc_Merge.lbl9.create(label,"Attachments",True,1935,255,1,5400,2100,True,0,Arial,8,-2147483633,0)
+gui.F_Doc_Merge.cmdAddAttach.create(button)
+gui.F_Doc_Merge.cmdAddAttach.caption(">")
+gui.F_Doc_Merge.cmdAddAttach.visible(True)
+gui.F_Doc_Merge.cmdAddAttach.size(355,375)
+gui.F_Doc_Merge.cmdAddAttach.zorder(0)
+gui.F_Doc_Merge.cmdAddAttach.position(4900,2700)
+gui.F_Doc_Merge.cmdAddAttach.enabled(True)
+gui.F_Doc_Merge.cmdAddAttach.fontname("Arial")
+gui.F_Doc_Merge.cmdAddAttach.fontsize(8)
+gui.F_Doc_Merge.cmdAddAttach.event(click,cmdaddattach_click)
+gui.F_Doc_Merge.cmdRemoveRcpt.create(button)
+gui.F_Doc_Merge.cmdRemoveRcpt.caption("<")
+gui.F_Doc_Merge.cmdRemoveRcpt.visible(True)
+gui.F_Doc_Merge.cmdRemoveRcpt.size(355,375)
+gui.F_Doc_Merge.cmdRemoveRcpt.zorder(0)
+gui.F_Doc_Merge.cmdRemoveRcpt.position(4900,1100)
+gui.F_Doc_Merge.cmdRemoveRcpt.enabled(True)
+gui.F_Doc_Merge.cmdRemoveRcpt.fontname("Arial")
+gui.F_Doc_Merge.cmdRemoveRcpt.fontsize(8)
+gui.F_Doc_Merge.cmdRemoveRcpt.event(click,cmdremovercpt_click)
+gui.F_Doc_Merge.cmdRemoveAtt.create(button)
+gui.F_Doc_Merge.cmdRemoveAtt.caption("<")
+gui.F_Doc_Merge.cmdRemoveAtt.visible(True)
+gui.F_Doc_Merge.cmdRemoveAtt.size(355,375)
+gui.F_Doc_Merge.cmdRemoveAtt.zorder(0)
+gui.F_Doc_Merge.cmdRemoveAtt.position(4900,3100)
+gui.F_Doc_Merge.cmdRemoveAtt.enabled(True)
+gui.F_Doc_Merge.cmdRemoveAtt.fontname("Arial")
+gui.F_Doc_Merge.cmdRemoveAtt.fontsize(8)
+gui.F_Doc_Merge.cmdRemoveAtt.event(click,cmdremoveatt_click)
+gui.F_Doc_Merge.dlist_templates.tabstop(True)
+gui.F_Doc_Merge.dlist_templates.tabindex(1)
+gui.F_Doc_Merge.dlist_contacts.tabstop(True)
+gui.F_Doc_Merge.dlist_contacts.tabindex(2)
+gui.F_Doc_Merge.txt_addtl_email.tabstop(True)
+gui.F_Doc_Merge.txt_addtl_email.tabindex(3)
+gui.F_Doc_Merge.cmd_addRcpt.tabstop(True)
+gui.F_Doc_Merge.cmd_addRcpt.tabindex(4)
+gui.F_Doc_Merge.txt_subject.tabstop(True)
+gui.F_Doc_Merge.txt_subject.tabindex(5)
+gui.F_Doc_Merge.mltxt_email_body.tabstop(True)
+gui.F_Doc_Merge.mltxt_email_body.tabindex(6)
+gui.F_Doc_Merge.cmd_send.tabstop(True)
+gui.F_Doc_Merge.cmd_send.tabindex(7)
+
+
+gui.F_Contact..create
+gui.F_Contact..caption("Contact Information")
+gui.F_Contact..size(6630,5355)
+gui.F_Contact..position(0,0)
+gui.F_Contact..event(unload,f_contact_unload)
+gui.F_Contact..alwaysontop(False)
+gui.F_Contact..fontname("Arial")
+gui.F_Contact..fontsize(8)
+gui.F_Contact..forecolor(0)
+gui.F_Contact..fontstyle(,,,,)
+gui.F_Contact..BackColor(-2147483633)
+gui.F_Contact..controlbox(True)
+gui.F_Contact..maxbutton(True)
+gui.F_Contact..minbutton(True)
+gui.F_Contact..mousepointer(0)
+gui.F_Contact..moveable(True)
+gui.F_Contact..sizeable(False)
+gui.F_Contact..ShowInTaskBar(True)
+gui.F_Contact..titlebar(True)
+gui.F_Contact.lbl_firstname.create(label,"First Name",True,1935,255,1,200,800,True,0,Arial,8,-2147483633,0)
+gui.F_Contact.txt_first_name.create(textbox,"",True,3000,300,0,200,1000,True,0,Arial,8,-2147483643,1)
+gui.F_Contact.txt_last_name.create(textbox,"",True,3000,300,0,3300,1000,True,0,Arial,8,-2147483643,1)
+gui.F_Contact.lbl_lastname.create(label,"Last Name",True,1935,255,1,3300,800,True,0,Arial,8,-2147483633,0)
+gui.F_Contact.txt_fax.create(textbox,"",True,3000,300,0,3300,1600,True,0,Arial,8,-2147483643,1)
+gui.F_Contact.txt_fax.numericonly(1)
+gui.F_Contact.txt_phone.create(textbox,"",True,3000,300,0,200,1600,True,0,Arial,8,-2147483643,1)
+gui.F_Contact.txt_phone.numericonly(1)
+gui.F_Contact.lbl_phone.create(label,"Phone",True,1935,255,1,200,1400,True,0,Arial,8,-2147483633,0)
+gui.F_Contact.lbl_Fax.create(label,"Fax",True,1935,300,1,3300,1400,True,0,Arial,8,-2147483633,0)
+gui.F_Contact.lbl_email.create(label,"Email",True,1935,255,1,200,200,True,0,Arial,8,-2147483633,0)
+gui.F_Contact.txt_email.create(textbox,"",True,3000,300,0,200,400,True,0,Arial,8,-2147483643,1)
+gui.F_Contact.cmd_continue.create(button)
+gui.F_Contact.cmd_continue.caption("Continue")
+gui.F_Contact.cmd_continue.visible(True)
+gui.F_Contact.cmd_continue.size(1000,375)
+gui.F_Contact.cmd_continue.zorder(0)
+gui.F_Contact.cmd_continue.position(200,4400)
+gui.F_Contact.cmd_continue.enabled(True)
+gui.F_Contact.cmd_continue.fontname("Arial")
+gui.F_Contact.cmd_continue.fontsize(8)
+gui.F_Contact.cmd_continue.event(click,cmd_continue_click)
+gui.F_Contact.txt_addr1.create(textbox,"",True,6100,300,0,200,2200,True,0,Arial,8,-2147483643,1)
+gui.F_Contact.txt_addr2.create(textbox,"",True,6100,300,0,200,2800,True,0,Arial,8,-2147483643,1)
+gui.F_Contact.txt_addr3.create(textbox,"",True,6100,300,0,200,3400,True,0,Arial,8,-2147483643,1)
+gui.F_Contact.txt_city.create(textbox,"",True,3500,300,0,200,4000,True,0,Arial,8,-2147483643,1)
+gui.F_Contact.txt_state.create(textbox,"",True,800,300,0,3800,4000,True,0,Arial,8,-2147483643,1)
+gui.F_Contact.txt_zip.create(textbox,"",True,1600,300,0,4700,4000,True,0,Arial,8,-2147483643,1)
+gui.F_Contact.txt_zip.numericonly(1)
+gui.F_Contact.lbl_addr1.create(label,"Address 1",True,1935,255,1,200,2000,True,0,Arial,8,-2147483633,0)
+gui.F_Contact.lbl_addr2.create(label,"Address 2",True,1935,255,1,200,2600,True,0,Arial,8,-2147483633,0)
+gui.F_Contact.lbl_addr3.create(label,"Address 3",True,1935,255,1,200,3200,True,0,Arial,8,-2147483633,0)
+gui.F_Contact.lbl_city.create(label,"City",True,1935,255,1,200,3800,True,0,Arial,8,-2147483633,0)
+gui.F_Contact.lbl_state.create(label,"State",True,1935,255,1,3800,3800,True,0,Arial,8,-2147483633,0)
+gui.F_Contact.lbl_Zip.create(label,"Zip",True,1935,255,1,4700,3800,True,0,Arial,8,-2147483633,0)
+gui.F_Contact.txt_first_name.tabstop(True)
+gui.F_Contact.txt_first_name.tabindex(1)
+gui.F_Contact.txt_last_name.tabstop(True)
+gui.F_Contact.txt_last_name.tabindex(2)
+gui.F_Contact.txt_phone.tabstop(True)
+gui.F_Contact.txt_phone.tabindex(3)
+gui.F_Contact.txt_fax.tabstop(True)
+gui.F_Contact.txt_fax.tabindex(4)
+gui.F_Contact.txt_addr1.tabstop(True)
+gui.F_Contact.txt_addr1.tabindex(5)
+gui.F_Contact.txt_addr2.tabstop(True)
+gui.F_Contact.txt_addr2.tabindex(6)
+gui.F_Contact.txt_addr3.tabstop(True)
+gui.F_Contact.txt_addr3.tabindex(7)
+gui.F_Contact.txt_city.tabstop(True)
+gui.F_Contact.txt_city.tabindex(8)
+gui.F_Contact.txt_state.tabstop(True)
+gui.F_Contact.txt_state.tabindex(9)
+gui.F_Contact.txt_zip.tabstop(True)
+gui.F_Contact.txt_zip.tabindex(10)
+gui.F_Contact.cmd_continue.tabstop(True)
+gui.F_Contact.cmd_continue.tabindex(11)
+
+
+gui.F_Multi_Contacts..create
+gui.F_Multi_Contacts..caption("Contact Selection")
+gui.F_Multi_Contacts..size(3525,2460)
+gui.F_Multi_Contacts..position(0,0)
+gui.F_Multi_Contacts..event(unload,f_multi_contacts_unload)
+gui.F_Multi_Contacts..alwaysontop(False)
+gui.F_Multi_Contacts..fontname("Arial")
+gui.F_Multi_Contacts..fontsize(8)
+gui.F_Multi_Contacts..forecolor(0)
+gui.F_Multi_Contacts..fontstyle(,,,,)
+gui.F_Multi_Contacts..BackColor(-2147483633)
+gui.F_Multi_Contacts..controlbox(True)
+gui.F_Multi_Contacts..maxbutton(True)
+gui.F_Multi_Contacts..minbutton(True)
+gui.F_Multi_Contacts..mousepointer(0)
+gui.F_Multi_Contacts..moveable(True)
+gui.F_Multi_Contacts..sizeable(False)
+gui.F_Multi_Contacts..ShowInTaskBar(True)
+gui.F_Multi_Contacts..titlebar(True)
+gui.F_Multi_Contacts.dlist_contacts.create(dropdownlist)
+gui.F_Multi_Contacts.dlist_contacts.visible(True)
+gui.F_Multi_Contacts.dlist_contacts.size(3000,330)
+gui.F_Multi_Contacts.dlist_contacts.zorder(0)
+gui.F_Multi_Contacts.dlist_contacts.position(200,1100)
+gui.F_Multi_Contacts.dlist_contacts.enabled(True)
+gui.F_Multi_Contacts.dlist_contacts.fontname("Arial")
+gui.F_Multi_Contacts.dlist_contacts.fontsize(8)
+gui.F_Multi_Contacts.lbl_contact.create(label,"Contact",True,1935,255,1,200,800,True,0,Arial,8,-2147483633,0)
+gui.F_Multi_Contacts.cmd_select.create(button)
+gui.F_Multi_Contacts.cmd_select.caption("Select")
+gui.F_Multi_Contacts.cmd_select.visible(True)
+gui.F_Multi_Contacts.cmd_select.size(1000,375)
+gui.F_Multi_Contacts.cmd_select.zorder(0)
+gui.F_Multi_Contacts.cmd_select.position(200,1500)
+gui.F_Multi_Contacts.cmd_select.enabled(True)
+gui.F_Multi_Contacts.cmd_select.fontname("Arial")
+gui.F_Multi_Contacts.cmd_select.fontsize(8)
+gui.F_Multi_Contacts.cmd_select.event(click,cmd_select_click)
+gui.F_Multi_Contacts.txt_email.create(textbox,"",True,3000,300,0,200,400,False,0,Arial,8,-2147483643,1)
+gui.F_Multi_Contacts.lbl_email.create(label,"Email",True,1935,255,1,200,200,True,0,Arial,8,-2147483633,0)
+
+
+gui.F_Group..create
+gui.F_Group..caption("Group Selection")
+gui.F_Group..size(3120,1830)
+gui.F_Group..position(0,0)
+gui.F_Group..alwaysontop(False)
+gui.F_Group..fontname("Arial")
+gui.F_Group..fontsize(8)
+gui.F_Group..forecolor(0)
+gui.F_Group..fontstyle(,,,,)
+gui.F_Group..BackColor(-2147483633)
+gui.F_Group..controlbox(True)
+gui.F_Group..maxbutton(True)
+gui.F_Group..minbutton(True)
+gui.F_Group..mousepointer(0)
+gui.F_Group..moveable(True)
+gui.F_Group..sizeable(False)
+gui.F_Group..ShowInTaskBar(True)
+gui.F_Group..titlebar(True)
+gui.F_Group.dlist_groups.create(dropdownlist)
+gui.F_Group.dlist_groups.visible(True)
+gui.F_Group.dlist_groups.size(2500,330)
+gui.F_Group.dlist_groups.zorder(0)
+gui.F_Group.dlist_groups.position(200,400)
+gui.F_Group.dlist_groups.enabled(True)
+gui.F_Group.dlist_groups.fontname("Arial")
+gui.F_Group.dlist_groups.fontsize(8)
+gui.F_Group.lbl_Group.create(label,"Document Group",True,1935,255,1,200,200,True,0,Arial,8,-2147483633,0)
+gui.F_Group.cmd_group_select.create(button)
+gui.F_Group.cmd_group_select.caption("Select")
+gui.F_Group.cmd_group_select.visible(True)
+gui.F_Group.cmd_group_select.size(1000,375)
+gui.F_Group.cmd_group_select.zorder(0)
+gui.F_Group.cmd_group_select.position(200,900)
+gui.F_Group.cmd_group_select.enabled(True)
+gui.F_Group.cmd_group_select.fontname("Arial")
+gui.F_Group.cmd_group_select.fontsize(8)
+gui.F_Group.cmd_group_select.event(click,cmd_group_select_click)
+
+
+Program.Sub.ScreenSU.End
+
+Program.Sub.Preflight.Start
+'%ContactFullName%, %Contact FirstName%, %ContactLastName%, %Company%, %Addr1%, %Addr2%, %Addr3%, %City%, %State%, %Zip%'
+'%CompPhone%, %CompFax%, %CurrentDate%, %GSUserFullName%, %ContactEmail%, %ContactPhone%, %ContactFax%, %Signature%
+
+	V.UDT.Contact.Define("CID",Long,"ID")
+	V.UDT.Contact.Define("ContactFull",String,"Name")
+	V.UDT.Contact.Define("ContactFirst",String,"Name_First")
+	V.UDT.Contact.Define("ContactLast",String,"Name_Last")
+	V.UDT.Contact.Define("ContactEmail",String,"Email1")
+	V.UDT.Contact.Define("ContactPhone",String,"Phone1")
+	V.UDT.Contact.Define("ContactFax",String,"Fax1")
+	V.UDT.Contact.Define("Addr1",String,"Address_1")
+	V.UDT.Contact.Define("Addr2",String,"Address_2")
+	V.UDT.Contact.Define("Addr3",String,"Prim_Address3")
+	V.UDT.Contact.Define("City",String,"City")
+	V.UDT.Contact.Define("State",String,"State")
+	V.UDT.Contact.Define("Zip",String,"Zip")
+	V.UDT.Contact.Define("FQN",String,"")
+	V.uGlobal.uContacts.Declare("Contact")
+	
+	V.UDT.Signatures.Define("UserID",Long,"UserID")
+	V.UDT.Signatures.Define("Signature",String,"Signature")
+	V.uGlobal.uSignatures.Declare("Signatures")
+	
+	V.UDT.Groups.Define("GRP_ID",Long,"GRP_ID")
+	V.UDT.Groups.Define("GRP_NAME",String,"GRP_NAME")
+	V.UDT.Groups.Define("GRP_DESC",String,"GRP_DESC")
+	V.uGlobal.uGroups.Declare("Groups")
+	
+	V.UDT.Templates.Define("TDID",Long,"TDID")
+	V.UDT.Templates.Define("Template_Name",String,"Template_Name")
+	V.UDT.Templates.Define("Path",String,"Path")
+	V.UDT.Templates.Define("FileName",String,"FileName")
+	V.UDT.Templates.Define("Security_Group",String,"Security_Group")
+	V.uGlobal.uTemplates.Declare("Templates")
+
+Variable.Global.sCompType.Declare(String)
+Variable.Global.sFN.Declare(String)
+Program.Sub.Preflight.End
+
+Program.Sub.Main.Start
+'Coded by: Melinda Keyes
+'Project Start Date: 11/14/2011
+'Quote: 2861
+'Modified by : ANS
+'Quote: 3845-1
+'Hooks:
+'  CRM Script Button 1 - 30618
+'Notes:
+'  A GAB program will be created for the document merge. It should be run from one of the script buttons in CRM (preferably one of the ones on the Main tab).
+'  The screen will have a dropdown list populated from the custom template document table, a drop down list of existing contacts on the selected company,
+'  a textbox to enter a recipient email address that is not already a contact, a listbox to store mulitple recipients as they are added, a textbox for the subject,
+'  and a multiline textbox for the email.
+
+F.Intrinsic.Control.SetErrorHandler("Main_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+'updated for CRM.NET TRT
+F.Intrinsic.Control.If(V.Caller.Hook,=,42900)
+	V.Passed.CRM-cmdGAB-0.Set("Email Doc")
+	F.Intrinsic.Control.End
+'updated for CRM.NET
+F.Intrinsic.Control.ElseIf(V.Caller.Hook,=,42918)
+	V.Local.sQuery.Declare(String)
+	V.Local.iC.Declare(Long)
+	V.Local.bOutlook.Declare(Boolean)
+
+	'save global company billing info
+	V.Global.sCompany.Declare(String)
+	V.Global.sCompName.Declare(String)
+	V.Global.sCompPhone.Declare(String)
+	V.Global.sCompFax.Declare(String)
+	V.Global.sUserFullName.Declare(String)
+	V.Global.sEventType.Declare(String)
+	V.Global.iCompType.Declare(Long)
+	V.Global.iGroup.Declare(Long)
+	V.Global.bDone.Declare(Boolean)
+	V.Global.bGrouped.Declare(Boolean)
+
+	V.Global.sCompany.Set(V.Passed.DATA-CRM-CompID)
+	V.Global.sCompName.Set(V.Passed.DATA-CRM-CompName)
+	V.Global.sCompPhone.Set(V.Passed.CRM-lblCompBPhone)
+	V.Global.sCompFax.Set(V.Passed.CRM-lblCompBFax)
+	V.Global.iCompType.Set(V.Passed.DATA-CRM-CompType)
+	V.Global.sCompType.Set(V.Passed.DATA-CRM-CompTypeAlpha)
+	F.Global.Security.GetFullName(V.Caller.User,V.Caller.CompanyCode,V.Global.sUserFullName)
+
+	F.Automation.MSOutlook.CheckPresence(V.Local.bOutlook)
+	F.Intrinsic.Control.If(V.Local.bOutlook,=,False)
+		F.Intrinsic.UI.Msgbox("Outlook was not found. Please make sure you have Microsoft Outlook installed.")
+		F.Intrinsic.Control.End
+	F.Intrinsic.Control.EndIf
+	F.ODBC.Connection!conX.OpenConnection(V.Ambient.PDSN,V.Ambient.PUser,V.Ambient.PPass)
+
+	F.ODBC.Connection!conX.OpenRecordsetRO("rst","SELECT Seq from CRM_EVENT_TYPE where VALUE LIKE 'Document Merge Automated Email'")
+	F.Intrinsic.Control.If(V.ODBC.conX!rst.EOF,<>,True)
+		V.Global.sEventType.Set(V.ODBC.conX!rst.FieldValString!SEQ)
+	F.Intrinsic.Control.Else
+		V.Global.sEventType.Set("*NC*")
+	F.Intrinsic.Control.EndIf
+	F.ODBC.conX!rst.Close
+
+	F.Intrinsic.Control.CallSub(Load_udts)
+
+	F.Intrinsic.Control.For(V.Local.iC,0,V.uGlobal.uTemplates.UBound,1)
+		Gui.F_Doc_Merge.dlist_templates.AddItem(V.uGlobal.uTemplates(V.Local.iC)!Template_Name)
+	F.Intrinsic.Control.Next(V.Local.iC)
+
+	F.Intrinsic.Control.For(V.Local.iC,0,V.uGlobal.uContacts.UBound,1)
+		Gui.F_Doc_Merge.dlist_contacts.AddItem(V.uGlobal.uContacts(V.Local.iC)!ContactFull)
+	F.Intrinsic.Control.Next(V.Local.iC)
+
+	F.Intrinsic.Control.For(V.Local.iC,0,V.uGlobal.uGroups.UBound,1)
+		Gui.F_Group.dlist_groups.AddItem(V.uGlobal.uGroups(V.Local.iC)!GRP_NAME)
+	F.Intrinsic.Control.Next(V.Local.iC)
+
+	Gui.F_Doc_Merge..Show
+F.Intrinsic.Control.Else
+	F.Intrinsic.Control.End
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("Main_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: ATG_3867_CRM_DOC_MERGE.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.End
+Function.Intrinsic.Control.EndIf
+
+Program.Sub.Main.End
+
+program.sub.f_doc_merge_unload.start
+F.Intrinsic.Control.SetErrorHandler("f_doc_merge_unload_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+F.ODBC.Connection!conX.Close
+F.Intrinsic.Control.End
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("f_doc_merge_unload_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: ATG_3867_CRM_DOC_MERGE.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+
+program.sub.f_doc_merge_unload.end
+
+program.sub.cmd_add_click.start
+F.Intrinsic.Control.SetErrorHandler("cmd_add_click_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+V.Local.sEmail.Declare(String)
+V.Local.sTemp.Declare(String)
+V.Local.iUBound.Declare(Long)
+V.Local.iC.Declare(Long)
+V.Local.bFound.Declare(Boolean)
+
+V.Local.sEmail.Set(V.Screen.F_Doc_Merge!txt_addtl_email.Text)
+F.Intrinsic.String.Trim(V.Local.sEmail,V.Local.sEmail)
+
+F.Intrinsic.Control.If(V.Local.sEmail,<>,"")
+	V.Local.sTemp.Set(V.Local.sEmail)
+	F.Intrinsic.String.Split(V.Local.sEmail,"@",V.Local.sEmail)
+	F.Intrinsic.Control.If(V.Local.sEmail.UBound,<>,1)
+		F.Intrinsic.UI.Msgbox("Invalid email address.")
+		F.Intrinsic.Control.ExitSub
+	F.Intrinsic.Control.EndIf
+	F.Intrinsic.String.Split(V.Local.sEmail(1),".",V.Local.sEmail)
+	F.Intrinsic.Control.If(V.Local.sEmail.UBound,<>,1)
+		F.Intrinsic.UI.Msgbox("Invalid email address.")
+		F.Intrinsic.Control.ExitSub
+	F.Intrinsic.Control.EndIf
+	V.Local.sEmail.Set(V.Local.sTemp)
+
+	F.Intrinsic.Math.Sub(V.Screen.F_Doc_Merge!lst_recipients.ListCount,1,V.Local.iUbound)
+	F.Intrinsic.Control.For(V.Local.iC,0,V.Local.iUbound,1)
+		F.Intrinsic.String.IsInString(V.Screen.F_Doc_Merge!lst_recipients.List(V.Local.iC),V.Local.sEmail,True,V.Local.bFound)
+		F.Intrinsic.Control.If(V.Local.bFound,=,True)
+			Gui.F_Doc_Merge.txt_addtl_email.Text("")
+			F.Intrinsic.Control.ExitSub
+		F.Intrinsic.Control.EndIf
+	F.Intrinsic.Control.Next(V.Local.iC)
+
+	F.Intrinsic.Control.If(V.Local.bFound,=,False)
+		Gui.F_Doc_Merge.lst_recipients.AddItem(V.Local.sEmail)
+	F.Intrinsic.Control.EndIf
+
+	Gui.F_Doc_Merge.txt_addtl_email.Text("")
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("cmd_add_click_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: ATG_3867_CRM_DOC_MERGE.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+
+program.sub.cmd_add_click.end
+
+program.sub.cmd_send_click.start
+F.Intrinsic.Control.SetErrorHandler("cmd_send_click_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+V.Local.iUB.Declare(Long)
+V.Local.i.Declare(Long)
+
+Gui.F_Doc_Merge..Enabled(false)
+F.Intrinsic.UI.InvokeWaitDialog("Please wait while the emails are sent.","Sending Emails")
+
+F.Intrinsic.Control.For(V.Local.i,0,V.uGlobal.uContacts.ubound,1)
+	F.Intrinsic.Control.If(V.uGlobal.uContacts(v.Local.i)!FQN,<>,"")
+		F.Intrinsic.Control.CallSub(Send_email,"iContact",V.Local.i)
+	F.Intrinsic.Control.endif
+F.Intrinsic.Control.Next(V.Local.i)
+
+F.Intrinsic.Control.CallSub(Cmd_clear_click)
+F.Intrinsic.UI.CloseWaitDialog
+F.Intrinsic.UI.Msgbox("Emails sent.")
+Gui.F_Doc_Merge..Enabled(true)
+F.Intrinsic.Control.End
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("cmd_send_click_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: ATG_3867_CRM_DOC_MERGE.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+
+program.sub.cmd_send_click.end
+
+program.sub.lst_recipients_dblclick.start
+F.Intrinsic.Control.SetErrorHandler("lst_recipients_dblclick_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+V.Local.iIndex.Declare(Long)
+V.Local.sEmail.Declare(String)
+
+V.Local.iIndex.Set(V.Screen.F_Doc_Merge!lst_recipients.ListIndex)
+F.Intrinsic.Control.If(V.Local.iIndex,<>,"-1")
+	Gui.F_Doc_Merge.lst_recipients.RemoveItem(V.Local.iIndex)
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("lst_recipients_dblclick_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: ATG_3867_CRM_DOC_MERGE.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+
+
+program.sub.lst_recipients_dblclick.end
+
+program.sub.dlist_contacts_lostfocus.start
+F.Intrinsic.Control.SetErrorHandler("dlist_contacts_lostfocus_Err")
+F.Intrinsic.Control.ClearErrors
+
+Gui.F_Doc_Merge..Enabled(false)
+
+V.Local.sError.Declare(String)
+V.Local.sQuery.Declare(String)
+V.Local.sName.Declare(String)
+V.Local.sEmail.Declare(String)
+V.Local.sList.Declare(String)
+V.Local.iC.Declare(Long)
+V.Local.iVal.Declare(Long)
+V.Local.iUBound.Declare(Long)
+V.Local.bFound.Declare(Boolean)
+
+V.Local.sName.Set(V.Screen.F_Doc_Merge!dlist_contacts.Text)
+V.Local.iVal.Set(V.Screen.F_Doc_Merge!dlist_contacts.ListIndex)
+
+F.Intrinsic.Control.If(V.Local.iVal,<>,-1)
+
+	V.Local.sEmail.Set(V.uGlobal.uContacts(V.Local.iVal)!ContactEmail)
+	F.Intrinsic.String.Trim(V.Local.sEmail,V.Local.sEmail)
+
+	F.Intrinsic.Control.If(V.Local.sEmail,=,"")
+		F.Intrinsic.UI.Msgbox("No email on file for this contact.")
+		Gui.F_Doc_Merge..Enabled(true)
+		F.Intrinsic.Control.ExitSub
+	F.Intrinsic.Control.EndIf
+
+	F.Intrinsic.Math.Sub(V.Screen.F_Doc_Merge!lst_recipients.ListCount,1,V.Local.iUbound)
+	F.Intrinsic.Control.For(V.Local.iC,0,V.Local.iUbound,1)
+		F.Intrinsic.String.IsInString(V.Screen.F_Doc_Merge!lst_recipients.List(V.Local.iC),V.Local.sEmail,True,V.Local.bFound)
+		F.Intrinsic.Control.If(V.Local.bFound,=,True)
+			Gui.F_Doc_Merge..Enabled(true)
+			F.Intrinsic.Control.ExitSub
+		F.Intrinsic.Control.EndIf
+	F.Intrinsic.Control.Next(V.Local.iC)
+
+	F.Intrinsic.Control.If(V.Local.bFound,=,False)
+		Gui.F_Doc_Merge.lst_recipients.AddItem(V.Local.sEmail)
+	F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.EndIf
+
+	Gui.F_Doc_Merge..Enabled(true)
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("dlist_contacts_lostfocus_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: ATG_3867_CRM_DOC_MERGE.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.ExitSub
+Function.Intrinsic.Control.EndIf
+
+program.sub.dlist_contacts_lostfocus.end
+
+Program.Sub.parse_template.Start
+F.Intrinsic.Control.SetErrorHandler("parse_template_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+V.Local.sTemplate.Declare(String)
+V.Local.sFQN.Declare(String)
+V.Local.sFQN2.Declare(String)
+V.Local.sReturn.Declare(String)
+V.Local.sDate.Declare(String)
+V.Local.sFindArr.Declare(String)
+V.Local.sReplaceArr.Declare(String)
+V.Local.iContact.Declare(Long)
+V.Local.iTemplate.Declare(Long)
+V.Local.bOOPresent.Declare(Boolean)
+V.Local.bWordPresent.Declare(Boolean)
+V.Local.bExists.Declare(Boolean)
+V.Local.i.Declare(Long)
+V.Local.sFormatedDate.Declare(String)
+V.Local.sName.Declare(String)
+V.Local.sLast.Declare(String)
+
+F.Intrinsic.String.Format(V.Ambient.Now,"Mmm d, yyyy",V.Local.sDate)
+
+V.Local.iContact.Set(V.Args.iContact)
+V.Local.sTemplate.Set(V.Screen.F_Doc_Merge!dlist_templates.Text)
+F.Intrinsic.Variable.UDTSeek(V.uGlobal.uTemplates!Template_Name,V.Local.sTemplate,0,V.Local.sReturn)
+F.Intrinsic.String.Split(V.Local.sReturn,"*!*",V.Local.sReturn)
+V.Local.iTemplate.Set(V.Local.sReturn(0))
+
+'create the find and replace search term arrays
+V.Local.sFindArr.Set("%ContactFullName%*!*%ContactFirstName%*!*%ContactLastName%*!*%Company%*!*%Addr1%*!*%Addr2%*!*%Addr3%*!*%City%*!*%State%*!*%Zip%*!*%CompPhone%*!*%CompFax%*!*%CurrentDate%*!*%GSUserFullName%*!*%ContactEmail%*!*%ContactPhone%*!*%ContactFax%*!*%Signature%")
+F.Intrinsic.String.Concat(V.uGlobal.uContacts(V.Local.iContact)!ContactFull,"*!*",V.uGlobal.uContacts(V.Local.iContact)!ContactFirst,"*!*",V.uGlobal.uContacts(V.Local.iContact)!ContactLast,"*!*",V.Global.sCompName,"*!*",V.Local.sReplaceArr)
+F.Intrinsic.String.Concat(V.Local.sReplaceArr,V.uGlobal.uContacts(V.Local.iContact)!Addr1,"*!*",V.uGlobal.uContacts(V.Local.iContact)!Addr2,"*!*",V.uGlobal.uContacts(V.Local.iContact)!Addr3,"*!*",V.uGlobal.uContacts(V.Local.iContact)!City,"*!*",V.uGlobal.uContacts(V.Local.iContact)!State,"*!*",V.Local.sReplaceArr)
+F.Intrinsic.String.Concat(V.Local.sReplaceArr,V.uGlobal.uContacts(V.Local.iContact)!Zip,"*!*",V.Global.sCompPhone,"*!*",V.Global.sCompFax,"*!*",V.Local.sDate,"*!*",V.Global.sUserFullName,"*!*",V.uGlobal.uContacts(V.Local.iContact)!ContactEmail,"*!*",V.uGlobal.uContacts(V.Local.iContact)!ContactPhone,"*!*",V.Local.sReplaceArr)
+F.Intrinsic.String.Concat(V.Local.sReplaceArr,V.uGlobal.uContacts(V.Local.iContact)!ContactFax,"*!*",V.uGlobal.uSignatures(0)!Signature,V.Local.sReplaceArr)
+
+F.Automation.OOGeneral.CheckPresence(V.Local.bOOPresent)
+F.Automation.MSWord.CheckPresence(V.Local.bWordPresent)
+
+F.Intrinsic.String.Format(V.Ambient.Now,"MMDDYYHHNN",V.Local.sFormatedDate)
+F.Intrinsic.String.Left(V.uGlobal.uContacts(v.Local.iContact)!ContactFirst,1,V.Local.sName)
+F.Intrinsic.String.Concat(V.local.sName,V.uGlobal.uContacts(v.Local.iContact)!ContactLast,V.Local.sName)
+F.Intrinsic.Control.If(V.Local.bWordPresent,=,True)
+	F.Intrinsic.String.Concat(V.uGlobal.uTemplates(V.Local.iTemplate)!Path,"\",V.local.sName,"-",V.uGlobal.uTemplates(V.Local.iTemplate)!Template_Name,"-",V.Local.sFormatedDate,".doc",V.Local.sFQN2)
+F.Intrinsic.Control.ElseIf(V.Local.bOOPresent,=,True)
+	F.Intrinsic.String.Concat(V.uGlobal.uTemplates(V.Local.iTemplate)!Path,"\",V.local.sName,"-",V.uGlobal.uTemplates(V.Local.iTemplate)!Template_Name,"-",V.Local.sFormatedDate,".odt",V.Local.sFQN2)
+F.Intrinsic.Control.Else
+	F.Intrinsic.UI.Msgbox("Please install Microsoft Word or OpenOffice.")
+	F.Intrinsic.Control.End
+F.Intrinsic.Control.EndIf
+	
+F.Intrinsic.String.Format(V.Ambient.Now,"MMDDYY",V.Local.sFormatedDate)
+F.Intrinsic.String.Left(V.uGlobal.uContacts(v.Local.iContact)!ContactFirst,1,V.Local.sName)
+F.Intrinsic.String.Left(V.uGlobal.uContacts(v.Local.iContact)!ContactLast,5,V.Local.sLast)
+F.Intrinsic.String.Concat(V.local.sName,V.Local.sLast,V.Local.sName)
+F.Intrinsic.Control.If(V.Local.bWordPresent,=,True)
+	F.Intrinsic.String.Concat(V.local.sName,"-",V.Local.sFormatedDate,"-",V.uGlobal.uTemplates(V.Local.iTemplate)!Template_Name,".doc",V.Global.sFN)
+F.Intrinsic.Control.Else
+	F.Intrinsic.String.Concat(V.local.sName,"-",V.Local.sFormatedDate,"-",V.uGlobal.uTemplates(V.Local.iTemplate)!Template_Name,".odt",V.Global.sFN)
+F.Intrinsic.Control.endif
+
+'save the new parsed file as a word doc
+'F.Intrinsic.Control.If(V.Local.bWordPresent,=,True)
+	F.Intrinsic.String.Concat(V.uGlobal.uTemplates(V.Local.iTemplate)!Path,"\",V.uGlobal.uTemplates(V.Local.iTemplate)!FileName,V.Local.sFQN)
+	
+	V.uGlobal.uContacts(V.Local.iContact)!FQN.Set(V.Local.sFQN2)
+	F.Intrinsic.File.CopyFile(V.Local.sFQN,V.Local.sFQN2)
+	F.Automation.MSWord.Replace(V.Local.sFQN2,V.Local.sFindArr,V.Local.sReplaceArr)
+	F.Intrinsic.Task.ShellExec(V.Local.i,"open",V.Local.sFQN2,"","",0)
+'	F.Automation.MSWord.Replace(V.Local.sFQN2,"%ContactFullName%",V.uGlobal.uContacts(V.Local.iContact)!ContactFull)
+'	F.Automation.MSWord.Replace(V.Local.sFQN2,"%ContactFirstName%",V.uGlobal.uContacts(V.Local.iContact)!ContactFirst)
+'	F.Automation.MSWord.Replace(V.Local.sFQN2,"%ContactLastName%",V.uGlobal.uContacts(V.Local.iContact)!ContactLast)
+'	F.Automation.MSWord.Replace(V.Local.sFQN2,"%Company%",V.Global.sCompName)
+'	F.Automation.MSWord.Replace(V.Local.sFQN2,"%Addr1%",V.uGlobal.uContacts(V.Local.iContact)!Addr1)
+'	F.Automation.MSWord.Replace(V.Local.sFQN2,"%Addr2%",V.uGlobal.uContacts(V.Local.iContact)!Addr2)
+'	F.Automation.MSWord.Replace(V.Local.sFQN2,"%Addr3%",V.uGlobal.uContacts(V.Local.iContact)!Addr3)
+'	F.Automation.MSWord.Replace(V.Local.sFQN2,"%City%",V.uGlobal.uContacts(V.Local.iContact)!City)
+'	F.Automation.MSWord.Replace(V.Local.sFQN2,"%State%",V.uGlobal.uContacts(V.Local.iContact)!State)
+'	F.Automation.MSWord.Replace(V.Local.sFQN2,"%Zip%",V.uGlobal.uContacts(V.Local.iContact)!Zip)
+'	F.Automation.MSWord.Replace(V.Local.sFQN2,"%CompPhone%",V.Global.sCompPhone)
+'	F.Automation.MSWord.Replace(V.Local.sFQN2,"%CompFax%",V.Global.sCompFax)
+'	F.Automation.MSWord.Replace(V.Local.sFQN2,"%CurrentDate%",V.Local.sDate)
+'	F.Automation.MSWord.Replace(V.Local.sFQN2,"%GSUserFullName%",V.Global.sUserFullName)
+'	F.Automation.MSWord.Replace(V.Local.sFQN2,"%ContactEmail%",V.uGlobal.uContacts(V.Local.iContact)!ContactEmail)
+'	F.Automation.MSWord.Replace(V.Local.sFQN2,"%ContactPhone%",V.uGlobal.uContacts(V.Local.iContact)!ContactPhone)
+'	F.Automation.MSWord.Replace(V.Local.sFQN2,"%ContactFax%",V.uGlobal.uContacts(V.Local.iContact)!ContactFax)
+'	F.Automation.MSWord.Replace(V.Local.sFQN2,"%Signature%",V.uGlobal.uSignatures(0)!Signature)
+	'F.Intrinsic.Task.ShellExec(0,"",V.Local.sFQN2,"","",1)
+
+'save the parsed file as an odt
+'F.Intrinsic.Control.ElseIf(V.Local.bOOPresent,=,True)
+'	F.Intrinsic.String.Concat(V.uGlobal.uTemplates(V.Local.iTemplate)!Path,"\",V.uGlobal.uTemplates(V.Local.iTemplate)!FileName,V.Local.sFQN)
+'	F.Intrinsic.String.Concat(V.uGlobal.uTemplates(V.Local.iTemplate)!Path,"\",V.local.sName,"-",V.uGlobal.uTemplates(V.Local.iTemplate)!Template_Name,"-",V.Local.sFormatedDate,".odt",V.Local.sFQN2)
+'	V.uGlobal.uContacts(V.Local.iContact)!FQN.Set(V.Local.sFQN2)
+'	F.Intrinsic.File.CopyFile(V.Local.sFQN,V.Local.sFQN2)
+'	F.Automation.OOWriter.Replace(V.Local.sFQN2,V.Local.sFindArr,V.Local.sReplaceArr)
+'	F.Intrinsic.Task.ShellExec(V.Local.i,"open",V.Local.sFQN2,"","",0)
+''	F.Automation.OOWriter.Replace(V.Local.sFQN2,"%ContactFullName%",V.uGlobal.uContacts(V.Local.iContact)!ContactFull)
+''	F.Automation.OOWriter.Replace(V.Local.sFQN2,"%ContactFirstName%",V.uGlobal.uContacts(V.Local.iContact)!ContactFirst)
+''	F.Automation.OOWriter.Replace(V.Local.sFQN2,"%ContactLastName%",V.uGlobal.uContacts(V.Local.iContact)!ContactLast)
+''	F.Automation.OOWriter.Replace(V.Local.sFQN2,"%Company%",V.Global.sCompName)
+''	F.Automation.OOWriter.Replace(V.Local.sFQN2,"%Addr1%",V.uGlobal.uContacts(V.Local.iContact)!Addr1)
+''	F.Automation.OOWriter.Replace(V.Local.sFQN2,"%Addr2%",V.uGlobal.uContacts(V.Local.iContact)!Addr2)
+''	F.Automation.OOWriter.Replace(V.Local.sFQN2,"%Addr3%",V.uGlobal.uContacts(V.Local.iContact)!Addr3)
+''	F.Automation.OOWriter.Replace(V.Local.sFQN2,"%City%",V.uGlobal.uContacts(V.Local.iContact)!City)
+''	F.Automation.OOWriter.Replace(V.Local.sFQN2,"%State%",V.uGlobal.uContacts(V.Local.iContact)!State)
+''	F.Automation.OOWriter.Replace(V.Local.sFQN2,"%Zip%",V.uGlobal.uContacts(V.Local.iContact)!Zip)
+''	F.Automation.OOWriter.Replace(V.Local.sFQN2,"%CompPhone%",V.Global.sCompPhone)
+''	F.Automation.OOWriter.Replace(V.Local.sFQN2,"%CompFax%",V.Global.sCompFax)
+''	F.Automation.OOWriter.Replace(V.Local.sFQN2,"%CurrentDate%",V.Local.sDate)
+''	F.Automation.OOWriter.Replace(V.Local.sFQN2,"%GSUserFullName%",V.Global.sUserFullName)
+''	F.Automation.OOWriter.Replace(V.Local.sFQN2,"%ContactEmail%",V.uGlobal.uContacts(V.Local.iContact)!ContactEmail)
+''	F.Automation.OOWriter.Replace(V.Local.sFQN2,"%ContactPhone%",V.uGlobal.uContacts(V.Local.iContact)!ContactPhone)
+''	F.Automation.OOWriter.Replace(V.Local.sFQN2,"%ContactFax%",V.uGlobal.uContacts(V.Local.iContact)!ContactFax)
+''	F.Automation.OOWriter.Replace(V.Local.sFQN2,"%Signature%",V.uGlobal.uSignatures(0)!Signature)
+'	'F.Intrinsic.Task.ShellExec(0,"",V.Local.sFQN2,"","",1)
+'
+'F.Intrinsic.Control.Else
+'	F.Intrinsic.UI.Msgbox("Please install Microsoft Word or OpenOffice.")
+'F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("parse_template_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: ATG_CRM_DOC_MERGE.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+
+Program.Sub.parse_template.End
+
+Program.Sub.load_udts.Start
+F.Intrinsic.Control.SetErrorHandler("load_udts_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+V.Local.sQuery.Declare(String)
+V.Local.sQuery2.Declare(String)
+V.Local.sUserGroups.Declare(String)
+V.Local.iUser.Declare(Long)
+V.Local.iC.Declare(Long)
+
+'Contatcts
+F.Intrinsic.String.Concat("Select * from contact left join crm_contact_aux on contact.alt_id = crm_contact_aux.cid where contact.CUST = '",V.Global.sCompany,"' and Type='",V.Global.scomptype,"' ORDER BY NAME",V.Local.sQuery)
+F.ODBC.Connection!conX.OpenRecordsetRO("rst",V.Local.sQuery)
+	F.Intrinsic.Variable.LoadUDTFromRecordset("conX","rst","V.uGlobal.uContacts",False)
+F.ODBC.conX!rst.Close
+
+'Signatures
+F.Global.Security.getuserid(V.Caller.User,V.Caller.CompanyCode,V.Local.iUser)
+F.Intrinsic.String.Concat("SELECT * FROM ATG_3867_Doc_Signtrs WHERE USERID = '",V.Local.iUser,"'",V.Local.sQuery)
+F.ODBC.Connection!conX.OpenRecordsetRO("rst",V.Local.sQuery)
+	F.Intrinsic.Variable.LoadUDTFromRecordset("conX","rst","V.uGlobal.uSignatures",False)
+F.ODBC.conX!rst.Close
+
+F.ODBC.Connection!conX.OpenRecordsetRO("rst",V.Local.sQuery)
+F.Intrinsic.Control.If(V.ODBC.conX!rst.EOF,=,False)
+	V.uGlobal.uSignatures(0)!Signature.Set(V.ODBC.conX!rst.FieldVal!Signature)
+	f.Intrinsic.String.Replace(v.uGlobal.uSignatures(0)!Signature,v.Ambient.NewLine,v.ASCII.13,v.uGlobal.uSignatures(0)!Signature)
+F.Intrinsic.Control.EndIf
+F.ODBC.conX!rst.Close
+
+F.Global.Security.GetUserGroups(V.Caller.User,V.Caller.CompanyCode,V.Local.sUserGroups)
+F.Intrinsic.String.Split(V.Local.sUserGroups,"*!*",V.Local.sUserGroups)
+
+F.Intrinsic.Control.If(V.Local.sUserGroups.UBound,>,1)
+	F.Intrinsic.String.Concat("SELECT * FROM ATG_3867_CRM_DocTemp WHERE Security_Group = '",V.Local.sUserGroups(0),"'",V.Local.sQuery)
+	F.Intrinsic.String.Concat("SELECT * FROM ATG_DOC_GRP WHERE GRP_NAME = '",V.Local.sUserGroups(0),"'",V.Local.sQuery2)
+	F.Intrinsic.Control.For(V.Local.iC,1,V.Local.sUserGroups.UBound,1)
+		F.Intrinsic.String.Concat(V.Local.sQuery," OR Security_Group = '",V.Local.sUserGroups(V.Local.iC),"'",V.Local.sQuery)
+		F.Intrinsic.String.Concat(V.Local.sQuery2," OR GRP_NAME = '",V.Local.sUserGroups(V.Local.iC),"'",V.Local.sQuery2)
+	F.Intrinsic.Control.Next(V.Local.iC)
+	F.Intrinsic.String.Concat(V.Local.sQuery," ORDER BY lower(filename)",V.Local.sQuery)
+	F.Intrinsic.String.Concat(V.Local.sQuery2," ORDER BY GRP_ID",V.Local.sQuery2)
+F.Intrinsic.Control.Else
+	F.Intrinsic.String.Concat("SELECT * FROM ATG_3867_CRM_DocTemp WHERE Security_Group = '",V.Local.sUserGroups(0),"' ORDER BY lower(filename)",V.Local.sQuery)
+	F.Intrinsic.String.Concat("SELECT * FROM ATG_DOC_GRP WHERE GRP_NAME = '",V.Local.sUserGroups(0),"' ORDER BY GRP_ID",V.Local.sQuery2)
+F.Intrinsic.Control.EndIf
+
+'Templates
+F.ODBC.Connection!conX.OpenRecordsetRO("rst",V.Local.sQuery)
+F.Intrinsic.Control.If(V.ODBC.conX!rst.EOF,=,True)
+	F.Intrinsic.UI.Msgbox("No templates found for your current user group security settings.")
+	F.Intrinsic.Control.end
+F.Intrinsic.Control.Else
+	F.Intrinsic.Variable.LoadUDTFromRecordset("conX","rst","V.uGlobal.uTemplates",False)
+F.Intrinsic.Control.EndIf
+F.ODBC.conX!rst.Close
+
+F.ODBC.Connection!conX.OpenRecordsetRO("rst",V.Local.sQuery2)
+F.Intrinsic.Control.If(V.ODBC.conX!rst.EOF,=,True)
+	F.Intrinsic.UI.Msgbox("No document control groups were found for your current user group security settings.")
+	F.Intrinsic.Control.end
+F.Intrinsic.Control.Else
+	F.Intrinsic.Variable.LoadUDTFromRecordset("conX","rst","V.uGlobal.uGroups",False)
+F.Intrinsic.Control.EndIf
+F.ODBC.conX!rst.Close
+
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("load_udts_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: ATG_3867_CRM_DOC_MERGE.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+
+Program.Sub.load_udts.End
+
+Program.Sub.send_email.Start
+F.Intrinsic.Control.SetErrorHandler("Send_email_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+V.Local.iContactIndex.Declare(String)
+V.Local.sRecipient.Declare(String)
+V.Local.sSubject.Declare(String)
+V.Local.sEmail.Declare(String)
+V.Local.sAttachment.Declare(String)
+V.Local.sTitle.Declare(String)
+V.Local.sDesc.Declare(String)
+V.Local.sGroup.Declare(String)
+V.Local.sReturn.Declare(String)
+V.Local.sRet.Declare(String)
+V.Local.sTemplate.Declare(String)
+V.Local.iTemplate.Declare(Long)
+V.Local.sCID.Declare(Long)
+V.Local.iGroup.Declare(Long)
+V.Local.iLinkID.Declare(Long)
+V.Local.iEID.Declare(Long)
+V.Local.sNow.Declare(String)
+V.Local.sQuery.Declare(String)
+V.Local.i.Declare(Long)
+V.Local.sAtt.Declare(String)
+V.Local.iPos.Declare(Long)
+V.Local.sTemp.declare(String)
+V.Local.sFormatedDate.Declare(String)
+V.Local.iLen.Declare(Long)
+V.Local.sName.Declare(String)
+V.Local.sLast.Declare(String)
+V.Local.bExists.Declare(Boolean)
+
+V.Local.iContactIndex.Set(V.Args.iContact)
+
+'ask the user which document control group the newly created document should be saved to
+V.Global.bGrouped.Set(False)
+
+F.Intrinsic.Control.If(V.uGlobal.uGroups.UBound,>,0)
+	Gui.F_Group..Show
+F.Intrinsic.Control.Else
+	V.Global.iGroup.Set(0)
+	V.Global.bGrouped.Set(True)
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.DoUntil(V.Global.bGrouped,=,True)
+	F.Intrinsic.UI.Sleep(2)
+F.Intrinsic.Control.Loop
+
+'parse throught the attachement
+'F.Intrinsic.Control.CallSub(Parse_template,"iContact",V.Local.iContactIndex)
+
+V.Local.sRecipient.Set(V.uGlobal.uContacts(V.Local.iContactIndex)!ContactEmail)
+V.Local.sSubject.Set(V.Screen.F_Doc_Merge!txt_subject.Text)
+V.Local.sEmail.Set(V.Screen.F_Doc_Merge!mltxt_email_body.Text)
+V.Local.sAttachment.Set(V.uGlobal.uContacts(V.Local.iContactIndex)!FQN)
+F.Intrinsic.Control.If(V.Screen.F_Doc_Merge!lstAttach.ListCount,>,0)
+	F.Intrinsic.Control.For(V.Local.i,0,V.Screen.F_Doc_Merge!lstAttach.ListCount,1)
+		F.Intrinsic.Control.If(V.Screen.F_Doc_Merge!lstAttach.List(v.Local.i),<>,"")
+			F.Intrinsic.String.rtrim(V.Screen.F_Doc_Merge!lstAttach.List(v.Local.i),V.Local.sTemp)
+			F.Intrinsic.String.Concat(V.Local.sAttachment,"*!*",V.Local.sTemp,V.local.sAttachment)
+		F.Intrinsic.Control.EndIf
+	F.Intrinsic.Control.Next(V.Local.i)
+F.Intrinsic.Control.EndIf
+V.Local.sCID.Set(V.uGlobal.uContacts(V.Local.iContactIndex)!CID.string)
+
+'send the email with attachment written for this contact
+F.Intrinsic.Control.If(V.Screen.F_Doc_Merge!txt_CC.Text,<>,"")
+	'send with CC recipient
+	F.Automation.MSOutlook.QueueEmail(V.Local.sRecipient,V.Local.sSubject,V.Local.sEmail,V.Local.sAttachment)
+	F.Intrinsic.String.Trim(V.Screen.F_Doc_Merge!txt_CC.Text,V.Local.sRet)
+	F.Automation.MSOutlook.QueueEmail(V.Local.sRet,V.Local.sSubject,V.Local.sEmail,V.Local.sAttachment)
+F.Intrinsic.Control.Else
+	'send without a CC recipient
+	F.Automation.MSOutlook.QueueEmail(V.Local.sRecipient,V.Local.sSubject,V.Local.sEmail,V.Local.sAttachment)
+F.Intrinsic.Control.EndIf
+
+V.Local.sTitle.Set(V.uGlobal.uContacts(V.Local.iContactIndex)!ContactFull)
+F.Intrinsic.String.Concat(V.Local.sSubject,": ",V.Local.sEmail,V.Local.sDesc)
+
+V.Local.sNow.Set(V.Ambient.Now)
+F.Global.CRM.SaveEvent(-1,"0",V.Global.sCompany,V.Global.iCompType.String,"1",V.Local.sTitle,V.Local.sDesc,V.Local.sNow,V.Local.sNow,V.Caller.User,"-1","False","False","0","-1","False","0","-1","1","-1","-1","-1","0",V.local.sCID,V.Local.sNow,V.Caller.User,V.local.sCID,"","","","","","","","","",V.Local.iEID)
+
+F.Intrinsic.Control.If(V.Global.sEventType,<>,"*NC*")
+	F.Intrinsic.String.Concat("Select ETYPE FROM CRM_EVENTS WHERE EID = '",V.Local.iEID,"'",V.Local.sQuery)
+	F.ODBC.Connection!conX.OpenLocalRecordsetRW("rst",V.Local.sQuery)
+	F.Intrinsic.Control.If(V.ODBC.conX!rst.EOF,<>,True)
+		F.ODBC.conX!rst.Set!ETYPE(V.Global.sEventType)
+		F.ODBC.conX!rst.Update
+	F.Intrinsic.Control.EndIf
+	F.ODBC.conX!rst.Close
+F.Intrinsic.Control.EndIf
+
+'attach document to document control center for this event
+
+V.Local.iGroup.Set(V.uGlobal.uGroups(V.Global.iGroup)!GRP_ID)
+V.Local.sTemplate.Set(V.Screen.F_Doc_Merge!dlist_templates.Text)
+F.Intrinsic.Variable.UDTSeek(V.uGlobal.uTemplates!Template_Name,V.Local.sTemplate,0,V.Local.sReturn)
+F.Intrinsic.String.Split(V.Local.sReturn,"*!*",V.Local.sReturn)
+V.Local.iTemplate.Set(V.Local.sReturn(0))
+
+'F.Intrinsic.String.InstrRev(V.uGlobal.uContacts(v.Local.iContactIndex)!FQN,"\",V.Local.i)
+'F.Intrinsic.String.Len(V.uGlobal.uContacts(v.Local.iContactIndex)!FQN,V.Local.iLen)
+'F.Intrinsic.Math.Sub(V.Local.iLen,V.Local.i,V.Local.i)
+'F.Intrinsic.String.Right(V.uGlobal.uContacts(v.Local.iContactIndex)!FQN,V.Local.i,V.Local.sDesc)
+
+F.Intrinsic.String.left(V.Global.sFN,30,V.Local.sDesc)
+
+F.Intrinsic.String.Split(V.Local.sAttachment,"*!*",V.Local.sAtt)
+F.Intrinsic.control.For(V.Local.i,0,V.Local.sAtt.UBound,1)
+	F.Intrinsic.Control.If(V.Local.i,<>,0)
+		F.Intrinsic.String.InstrRev(V.Local.sAtt(v.Local.i),"\",V.Local.iPos)
+		F.Intrinsic.Math.Sub(V.Local.sAtt(v.Local.i).Length,V.Local.iPos,V.Local.iPos)
+		F.Intrinsic.String.Right(V.Local.sAtt(v.Local.i),V.Local.iPos,V.Local.sDesc)
+		'V.Local.sDesc.Set(V.Local.sAtt(v.Local.i))
+	F.Intrinsic.Control.EndIf
+	F.Global.DocumentControl.CreateReference(V.Local.iEID,91,V.Local.iLinkID)
+	Function.Global.DocumentControl.AddDocumentNFC(V.Local.iLinkID,V.Local.sAtt(v.Local.i),V.Local.sDesc,V.Local.iGroup,"")
+	F.Intrinsic.UI.DoEvents
+	F.Intrinsic.UI.Sleep(3)
+	F.Intrinsic.UI.DoEvents
+	F.Global.DocumentControl.CreateReference(V.Global.sCompany,V.Global.icomptype,V.Local.iLinkID)
+	Function.Global.DocumentControl.AddDocumentNFC(V.Local.iLinkID,V.Local.sAtt(v.Local.i),V.Local.sDesc,V.Local.iGroup,"")
+
+	F.Intrinsic.File.DeleteFile(V.Local.sAtt(v.Local.i))
+F.Intrinsic.Control.Next(V.Local.i)
+
+'allow for the program to continue to the next email in the list
+V.Global.bDone.Set(True)
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("Send_email_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,=,287)
+	F.Intrinsic.UI.Msgbox("Email was not able to be sent because Outlook is not running. Please start Outlook and try again.")
+	F.Intrinsic.UI.CloseWaitDialog
+	Gui.F_Doc_Merge..Enabled(true)
+F.Intrinsic.Control.Elseif(V.Ambient.ErrorNumber,=,202611)
+	F.Intrinsic.UI.Msgbox("Email was not able to be sent because Outlook is not running. Please start Outlook and try again.")
+	F.Intrinsic.UI.CloseWaitDialog
+	Gui.F_Doc_Merge..Enabled(true)
+F.Intrinsic.Control.ElseIf(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: ATG_3867_CRM_DOC_MERGE.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.End
+Function.Intrinsic.Control.EndIf
+
+Program.Sub.send_email.End
+
+program.sub.f_contact_unload.start
+F.Intrinsic.Control.SetErrorHandler("f_contact_unload_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+V.Local.iResponse.Declare(Long)
+
+F.Intrinsic.UI.Msgbox("Exiting now will quit the program. Exit?",,1,V.Local.iResponse)
+
+F.Intrinsic.Control.If(V.Local.iResponse,=,1)
+	F.Intrinsic.Control.CallSub(F_doc_merge_unload)
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("f_contact_unload_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: ATG_3867_CRM_DOC_MERGE-Backup.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.Debug.SetLA(V.Local.sError)
+	V.Global.bErrs.Set(True)
+Function.Intrinsic.Control.EndIf
+
+program.sub.f_contact_unload.end
+
+program.sub.cmd_continue_click.start
+F.Intrinsic.Control.SetErrorHandler("cmd_continue_click_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+V.Local.sName.Declare(String)
+V.Local.iUBound.Declare(Long)
+
+'accounts for customers with no contacts entered
+F.Intrinsic.Math.Add(V.uGlobal.uContacts.UBound,1,V.Local.iUBound)
+F.Intrinsic.Control.If(V.Local.iUBound,=,0)
+	V.uGlobal.uContacts.Redim(0,0)
+F.Intrinsic.Control.Else
+	V.uGlobal.uContacts.RedimPreserve(0,V.Local.iUBound)
+F.Intrinsic.Control.EndIf
+
+V.uGlobal.uContacts(V.Local.iUBound)!CID.Set(-1)
+V.uGlobal.uContacts(V.Local.iUBound)!ContactEmail.Set(V.Screen.F_Contact!txt_email.Text)
+V.uGlobal.uContacts(V.Local.iUBound)!ContactFirst.Set(V.Screen.F_Contact!txt_first_name.Text)
+V.uGlobal.uContacts(V.Local.iUBound)!ContactLast.Set(V.Screen.F_Contact!txt_last_name.Text)
+F.Intrinsic.String.Concat(V.Screen.F_Contact!txt_first_name.Text," ",V.Screen.F_Contact!txt_last_name.Text,V.Local.sName)
+V.uGlobal.uContacts(V.Local.iUBound)!ContactFull.Set(V.Local.sName)
+V.uGlobal.uContacts(V.Local.iUBound)!ContactPhone.Set(V.Screen.F_Contact!txt_phone.Text)
+V.uGlobal.uContacts(V.Local.iUBound)!ContactFax.Set(V.Screen.F_Contact!txt_fax.Text)
+V.uGlobal.uContacts(V.Local.iUBound)!Addr1.Set(V.Screen.F_Contact!txt_addr1.Text)
+V.uGlobal.uContacts(V.Local.iUBound)!Addr2.Set(V.Screen.F_Contact!txt_addr2.Text)
+V.uGlobal.uContacts(V.Local.iUBound)!Addr3.Set(V.Screen.F_Contact!txt_addr3.Text)
+V.uGlobal.uContacts(V.Local.iUBound)!City.Set(V.Screen.F_Contact!txt_city.Text)
+V.uGlobal.uContacts(V.Local.iUBound)!State.Set(V.Screen.F_Contact!txt_state.Text)
+V.uGlobal.uContacts(V.Local.iUBound)!Zip.Set(V.Screen.F_Contact!txt_zip.Text)
+
+Gui.F_Contact..Visible(false)
+
+'F.Intrinsic.Control.CallSub(Send_email,"iContact",V.Local.iUBound)
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("cmd_continue_click_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: ATG_3867_CRM_DOC_MERGE.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.End
+Function.Intrinsic.Control.EndIf
+
+
+program.sub.cmd_continue_click.end
+
+program.sub.f_multi_contacts_unload.start
+F.Intrinsic.Control.SetErrorHandler("f_multi_contacts_unload_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+V.Local.iResponse.Declare(Long)
+
+F.Intrinsic.UI.Msgbox("Exiting now will quit the program. Exit?",,1,V.Local.iResponse)
+
+F.Intrinsic.Control.If(V.Local.iResponse,=,1)
+	F.Intrinsic.Control.CallSub(F_doc_merge_unload)
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("f_multi_contacts_unload_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: ATG_3867_CRM_DOC_MERGE-Backup.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.Debug.SetLA(V.Local.sError)
+	V.Global.bErrs.Set(True)
+Function.Intrinsic.Control.EndIf
+
+program.sub.f_multi_contacts_unload.end
+
+program.sub.cmd_select_click.start
+F.Intrinsic.Control.SetErrorHandler("cmd_select_click_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+V.Local.sContact.Declare(String)
+V.Local.sRet.Declare(String)
+
+V.Local.sContact.Set(V.Screen.F_Multi_Contacts!dlist_contacts.Text)
+F.Intrinsic.String.Trim(V.Local.sContact,V.Local.sContact)
+F.Intrinsic.Control.If(V.Local.sContact,=,"")
+	F.Intrinsic.UI.Msgbox("Please select a contact before continuing.")
+	F.Intrinsic.Control.ExitSub
+F.Intrinsic.Control.Else
+	Gui.F_Multi_Contacts..Visible(false)
+	F.Intrinsic.Variable.UDTSeek(V.uGlobal.uContacts!ContactFull,V.Local.sContact,0,V.Local.sRet)
+	F.Intrinsic.String.Split(V.Local.sRet,"*!*",V.Local.sRet)
+	F.Intrinsic.Control.CallSub(Send_email,"iContact",V.Local.sRet)
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("cmd_select_click_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: ATG_3867_CRM_DOC_MERGE-Backup.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.Debug.SetLA(V.Local.sError)
+	V.Global.bErrs.Set(True)
+Function.Intrinsic.Control.EndIf
+
+program.sub.cmd_select_click.end
+
+Program.Sub.clear_contact.Start
+F.Intrinsic.Control.SetErrorHandler("clear_contact_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+Gui.F_Contact.txt_addr1.Text("")
+Gui.F_Contact.txt_addr2.Text("")
+Gui.F_Contact.txt_addr3.Text("")
+Gui.F_Contact.txt_city.Text("")
+Gui.F_Contact.txt_email.Text("")
+Gui.F_Contact.txt_fax.Text("")
+Gui.F_Contact.txt_first_name.Text("")
+Gui.F_Contact.txt_last_name.Text("")
+Gui.F_Contact.txt_phone.Text("")
+Gui.F_Contact.txt_state.Text("")
+Gui.F_Contact.txt_zip.Text("")
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("clear_contact_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: ATG_3867_CRM_DOC_MERGE-Backup.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.Debug.SetLA(V.Local.sError)
+	V.Global.bErrs.Set(True)
+Function.Intrinsic.Control.EndIf
+
+Program.Sub.clear_contact.End
+
+program.sub.cmd_clear_click.start
+F.Intrinsic.Control.SetErrorHandler("cmd_clear_click_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+Gui.F_Doc_Merge.txt_addtl_email.Text("")
+Gui.F_Doc_Merge.txt_subject.Text("")
+Gui.F_Doc_Merge.txtAttach.Text("")
+Gui.F_Doc_Merge.txt_CC.Text("")
+Gui.F_Doc_Merge.mltxt_email_body.Text("")
+Gui.F_Doc_Merge.lst_recipients.ClearItems
+Gui.F_Doc_Merge.lstAttach.clearitems
+Gui.F_Doc_Merge.dlist_contacts.ListIndex(-1)
+Gui.F_Doc_Merge.dlist_templates.ListIndex(-1)
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("cmd_clear_click_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: ATG_3867_CRM_DOC_MERGE-Backup.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.Debug.SetLA(V.Local.sError)
+	V.Global.bErrs.Set(True)
+Function.Intrinsic.Control.EndIf
+
+program.sub.cmd_clear_click.end
+
+program.sub.cmd_group_select_click.start
+F.Intrinsic.Control.SetErrorHandler("cmd_group_select_click_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+V.Local.sGroup.Declare(String)
+V.Local.sRet.Declare(String)
+
+Gui.F_Group..Enabled(false)
+
+V.Local.sGroup.Set(V.Screen.F_Group!dlist_groups.Text)
+F.Intrinsic.Control.If(V.Local.sGroup.Trim,<>,"")
+	F.Intrinsic.Variable.UDTSeek(V.uGlobal.uGroups!GRP_NAME,V.Local.sGroup,0,V.Local.sRet)
+	V.Global.iGroup.Set(V.Local.sRet)
+	Gui.F_Group..Visible(false)
+	V.Global.bGrouped.Set(True)
+F.Intrinsic.Control.Else
+	F.Intrinsic.UI.Msgbox("Please select a group to continue.")
+	Gui.F_Group..Enabled(true)
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("cmd_group_select_click_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: ATG_3867_CRM_DOC_MERGE.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+
+
+
+program.sub.cmd_group_select_click.end
+
+program.sub.cmdaddattach_click.start
+Gui.F_Doc_Merge.lstAttach.AddItem(V.screen.F_Doc_Merge!txtAttach.text)
+
+
+program.sub.cmdaddattach_click.end
+
+program.sub.cmdattachbrws_click.start
+V.Local.sRet.Declare(String)
+Function.Intrinsic.UI.ShowOpenFileDialog(“”,"*.*",v.Caller.DocDir,v.Local.sRet)
+F.Intrinsic.Control.If(V.Local.sRet,<>,"***CANCEL***")
+	Gui.F_Doc_Merge.txtAttach.Text(V.Local.sRet)
+F.Intrinsic.Control.EndIf
+
+
+program.sub.cmdattachbrws_click.end
+
+program.sub.cmdedit_click.start
+F.Intrinsic.Control.SetErrorHandler("cmd_send_click_Err")
+F.Intrinsic.Control.ClearErrors
+
+Gui.F_Doc_Merge..Enabled(false)
+F.Intrinsic.UI.InvokeWaitDialog("Please wait while documents are merged.","Merging Emails")
+
+V.Local.sError.Declare(String)
+V.Local.sQuery.Declare(String)
+V.Local.sRecipients.Declare(String)
+V.Local.sContacts.Declare(String)
+V.Local.sSender.Declare(String)
+V.Local.sSenderAddr.Declare(String)
+V.Local.sSubject.Declare(String)
+V.Local.sMessage.Declare(String)
+V.Local.sDocTemplate.Declare(String)
+V.Local.sReturn.Declare(String)
+V.Local.sCC.Declare(String)
+V.Local.bOutlook.Declare(Boolean)
+V.Local.bContact.Declare(Boolean)
+V.Local.iC.Declare(Long)
+V.Local.iC2.Declare(Long)
+V.Local.iUbound.Declare(Long)
+
+
+V.Local.sDocTemplate.Set(V.Screen.F_Doc_Merge!dlist_templates.Text)
+F.Intrinsic.String.Trim(V.Local.sDocTemplate,V.Local.sDocTemplate)
+F.Intrinsic.Control.If(V.Local.sDocTemplate,=,"")
+	F.Intrinsic.UI.Msgbox("Please select a template before continuing.")
+	Gui.F_Doc_Merge..Enabled(true)
+	F.Intrinsic.UI.CloseWaitDialog
+	F.Intrinsic.Control.ExitSub
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.If(V.Screen.F_Doc_Merge!txt_CC.Text,<>,"")
+	V.Local.sCC.Set(V.Screen.F_Doc_Merge!txt_CC.Text)
+	F.Intrinsic.String.Split(V.Local.sCC,"@",V.Local.sCC)
+	F.Intrinsic.Control.If(V.Local.sCC.UBound,<>,1)
+		F.Intrinsic.UI.Msgbox("CC Recipient email address is invalid.")
+		Gui.F_Doc_Merge..Enabled(true)
+		F.Intrinsic.UI.CloseWaitDialog
+		F.Intrinsic.Control.ExitSub
+	F.Intrinsic.Control.EndIf
+	F.Intrinsic.String.Split(V.Local.sCC(1),".",V.Local.sCC)
+	F.Intrinsic.Control.If(V.Local.sCC.UBound,<>,1)
+		F.Intrinsic.UI.Msgbox("CC Recipient email address is invalid.")
+		Gui.F_Doc_Merge..Enabled(true)
+		F.Intrinsic.UI.CloseWaitDialog
+		F.Intrinsic.Control.ExitSub
+	F.Intrinsic.Control.EndIf
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Math.Sub(V.Screen.F_Doc_Merge!lst_recipients.ListCount,1,V.Local.iUbound)
+V.Local.sRecipients.Set(V.Screen.F_Doc_Merge!lst_recipients.List(V.Local.iC))
+F.Intrinsic.Control.For(V.Local.iC,1,V.Local.iUbound,1)
+	F.Intrinsic.String.Concat(V.Local.sRecipients,"*!*",V.Screen.F_Doc_Merge!lst_recipients.List(V.Local.iC),V.Local.sRecipients)
+F.Intrinsic.Control.Next(V.Local.iC)
+
+F.Intrinsic.Control.If(V.Local.sRecipients,=,"")
+	Gui.F_Doc_Merge..Enabled(true)
+	F.Intrinsic.UI.CloseWaitDialog
+	F.Intrinsic.Control.ExitSub
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.String.Split(V.Local.sRecipients,"*!*",V.Local.sRecipients)
+'loop through all email addresses in the recipients list
+F.Intrinsic.Control.For(V.Local.iC,0,V.Local.sRecipients.UBound,1)
+	F.Intrinsic.Variable.UDTSeek(V.uGlobal.uContacts!ContactEmail,V.Local.sRecipients(V.Local.iC),0,V.Local.sReturn)
+	F.Intrinsic.Control.If(V.Local.sReturn,<>,"")
+		F.Intrinsic.String.Split(V.Local.sReturn,"*!*",V.Local.sReturn)
+		F.Intrinsic.Control.If(V.Local.sReturn.UBound,<>,0)
+			'assuming the contact if multiple are found with the same email
+			'F.Intrinsic.Control.CallSub(Send_email,"iContact",V.Local.sReturn(0))
+			
+			F.Intrinsic.Control.CallSub(Parse_template,"iContact",V.Local.sReturn(0))
+			'if multiple contacts for this company have the same email, make the user choose one contact
+'			Gui.F_Multi_Contacts.txt_email.Text(V.Local.sRecipients(V.Local.iC))
+'			F.Intrinsic.Control.For(V.Local.iC2,0,V.Local.sReturn.UBound,1)
+'				Gui.F_Multi_Contacts.dlist_contacts.AddItem(V.uGlobal.uContacts(V.Local.iC2)!ContactFull)
+'			F.Intrinsic.Control.Next(V.Local.iC2)
+'			F.Intrinsic.UI.Msgbox("Multiple contacts were found with this email. Please select a contact.")
+'			Gui.F_Multi_Contacts..Show
+		F.Intrinsic.Control.Else
+			'if single contact is found continue
+			'F.Intrinsic.Control.CallSub(Send_email,"iContact",V.Local.sReturn)
+
+			F.Intrinsic.Control.CallSub(Parse_template,"iContact",V.Local.sReturn)
+		F.Intrinsic.Control.EndIf
+	F.Intrinsic.Control.Else
+		'if there is no contact information for the given email, prompt the user for wildcard data
+		F.Intrinsic.UI.Msgbox("No contact was found with specified email. Enter contact information.")
+		F.Intrinsic.Control.CallSub(Clear_contact)
+		Gui.F_Contact.txt_email.Text(V.Local.sRecipients(V.Local.iC))
+		Gui.F_Contact..Show
+	F.Intrinsic.Control.EndIf
+
+	'force the program to wait until the sub-process with open screens is finished
+'	F.Intrinsic.Control.DoUntil(V.Global.bDone,=,True)
+'		F.Intrinsic.UI.SleepMS(5)
+'	F.Intrinsic.Control.Loop
+	
+F.Intrinsic.Control.Next(V.Local.iC)
+
+'F.Intrinsic.Control.CallSub(Cmd_clear_click)
+F.Intrinsic.UI.CloseWaitDialog
+'F.Intrinsic.UI.Msgbox("Emails sent.")
+Gui.F_Doc_Merge..Enabled(true)
+Gui.F_Doc_Merge.cmd_send.Enabled(True)
+'F.Intrinsic.Control.End
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("cmd_send_click_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: ATG_3867_CRM_DOC_MERGE.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+
+
+
+program.sub.cmdedit_click.end
+
+program.sub.cmdremovercpt_click.start
+F.Intrinsic.Control.If(V.Screen.F_Doc_Merge!lst_recipients.ListIndex,<>,-1)
+	Gui.F_Doc_Merge.lst_recipients.RemoveItem(V.Screen.F_Doc_Merge!lst_recipients.ListIndex)
+F.Intrinsic.Control.EndIf
+
+program.sub.cmdremovercpt_click.end
+
+program.sub.cmdremoveatt_click.start
+F.Intrinsic.Control.If(V.Screen.F_Doc_Merge!lstAttach.ListIndex,<>,-1)
+	Gui.F_Doc_Merge.lstAttach.RemoveItem(V.Screen.F_Doc_Merge!lstAttach.ListIndex)
+F.Intrinsic.Control.EndIf
+
+
+program.sub.cmdremoveatt_click.end
+
+Program.Sub.Comments.Start
+${$0$}$ATG_3867_CRM_DOC_MERGE$}$TRT$}$4/29/2016
+${$1$}$$}$$}$1$}$42918$}$CRM.NET-GAB1$}$4/29/2016 1:45:53 PM$}$(Program: Global_Shop_CRM.exe; Screen: )
+
+${$1$}$$}$$}$0$}$42900$}$CRM.NET-ENTRY$}$4/29/2016 1:45:33 PM$}$(Program: Global_Shop_CRM.exe; Screen: )
+
+Program.Sub.Comments.End
+
